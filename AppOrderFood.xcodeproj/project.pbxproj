@@ -15,6 +15,12 @@
 		D2A818C52B974F7A0049C0E5 /* AppOrderFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818C42B974F7A0049C0E5 /* AppOrderFoodTests.swift */; };
 		D2A818CF2B974F7A0049C0E5 /* AppOrderFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818CE2B974F7A0049C0E5 /* AppOrderFoodUITests.swift */; };
 		D2A818D12B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818D02B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift */; };
+		D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */; };
+		D2A818EA2B9756550049C0E5 /* SplineRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = D2A818E92B9756550049C0E5 /* SplineRuntime */; };
+		D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818EB2B975B390049C0E5 /* LoginView.swift */; };
+		D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818EF2B975F710049C0E5 /* SigninView.swift */; };
+		D2A818F42B9760FC0049C0E5 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */; };
+		D2A818F62B9764100049C0E5 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818F52B9764100049C0E5 /* SuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,11 @@
 		D2A818CA2B974F7A0049C0E5 /* AppOrderFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppOrderFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A818CE2B974F7A0049C0E5 /* AppOrderFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodUITests.swift; sourceTree = "<group>"; };
 		D2A818D02B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingstartedView.swift; sourceTree = "<group>"; };
+		D2A818EB2B975B390049C0E5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D2A818EF2B975F710049C0E5 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		D2A818F52B9764100049C0E5 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A818EA2B9756550049C0E5 /* SplineRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +108,13 @@
 		D2A818B02B974F770049C0E5 /* AppOrderFood */ = {
 			isa = PBXGroup;
 			children = (
+				D2A818E12B9750880049C0E5 /* Services */,
+				D2A818E02B9750770049C0E5 /* Modules */,
+				D2A818DF2B9750710049C0E5 /* UI */,
+				D2A818DD2B97505D0049C0E5 /* Common */,
 				D2A818B12B974F770049C0E5 /* AppOrderFoodApp.swift */,
 				D2A818B32B974F770049C0E5 /* ContentView.swift */,
 				D2A818B52B974F770049C0E5 /* Item.swift */,
-				D2A818B72B974F790049C0E5 /* Assets.xcassets */,
 				D2A818B92B974F790049C0E5 /* Preview Content */,
 			);
 			path = AppOrderFood;
@@ -130,6 +145,112 @@
 			path = AppOrderFoodUITests;
 			sourceTree = "<group>";
 		};
+		D2A818DD2B97505D0049C0E5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818DE2B9750660049C0E5 /* Resources */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D2A818DE2B9750660049C0E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818B72B974F790049C0E5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D2A818DF2B9750710049C0E5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D2A818E02B9750770049C0E5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818F12B9760DD0049C0E5 /* ForgotPassword */,
+				D2A818ED2B975F4E0049C0E5 /* Signin */,
+				D2A818E32B9750BF0049C0E5 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D2A818E12B9750880049C0E5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818E22B9750920049C0E5 /* APIService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D2A818E22B9750920049C0E5 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		D2A818E32B9750BF0049C0E5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818E52B9750D80049C0E5 /* Model */,
+				D2A818E42B9750CA0049C0E5 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D2A818E42B9750CA0049C0E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */,
+				D2A818EB2B975B390049C0E5 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2A818E52B9750D80049C0E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2A818ED2B975F4E0049C0E5 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818EE2B975F600049C0E5 /* View */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		D2A818EE2B975F600049C0E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818EF2B975F710049C0E5 /* SigninView.swift */,
+				D2A818F52B9764100049C0E5 /* SuccessView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2A818F12B9760DD0049C0E5 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818F22B9760F00049C0E5 /* View */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		D2A818F22B9760F00049C0E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +267,9 @@
 			dependencies = (
 			);
 			name = AppOrderFood;
+			packageProductDependencies = (
+				D2A818E92B9756550049C0E5 /* SplineRuntime */,
+			);
 			productName = AppOrderFood;
 			productReference = D2A818AE2B974F770049C0E5 /* AppOrderFood.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +342,9 @@
 				Base,
 			);
 			mainGroup = D2A818A52B974F770049C0E5;
+			packageReferences = (
+				D2A818E82B9756550049C0E5 /* XCRemoteSwiftPackageReference "spline-ios" */,
+			);
 			productRefGroup = D2A818AF2B974F770049C0E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,9 +387,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A818F62B9764100049C0E5 /* SuccessView.swift in Sources */,
 				D2A818B42B974F770049C0E5 /* ContentView.swift in Sources */,
+				D2A818F42B9760FC0049C0E5 /* ForgotPasswordView.swift in Sources */,
 				D2A818B62B974F770049C0E5 /* Item.swift in Sources */,
+				D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */,
 				D2A818B22B974F770049C0E5 /* AppOrderFoodApp.swift in Sources */,
+				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
+				D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +724,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D2A818E82B9756550049C0E5 /* XCRemoteSwiftPackageReference "spline-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/splinetool/spline-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D2A818E92B9756550049C0E5 /* SplineRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2A818E82B9756550049C0E5 /* XCRemoteSwiftPackageReference "spline-ios" */;
+			productName = SplineRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D2A818A62B974F770049C0E5 /* Project object */;
 }
