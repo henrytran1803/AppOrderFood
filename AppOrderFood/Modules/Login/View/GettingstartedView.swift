@@ -28,9 +28,10 @@ struct GettingstartedView: View {
             Spacer()
             Button("Getting started"){
                 isShowingLogin = true
-            }.buttonStyle(.borderedProminent)
+            }//.buttonStyle(.borderedProminent)
                 .font(.system(size: 20).bold())
-                .tint(.pink)
+                .buttonStyle(PressEffectButtonStyle(backgroundColor:Color(Color.pink)))
+                
                 .frame(width: 250,height: 100)
             
         }        .fullScreenCover(isPresented: $isShowingLogin) {

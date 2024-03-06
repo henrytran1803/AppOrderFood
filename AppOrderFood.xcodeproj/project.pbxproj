@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21E123A2B97EE9000DEEDDD /* PressEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */; };
 		D2A818B22B974F770049C0E5 /* AppOrderFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818B12B974F770049C0E5 /* AppOrderFoodApp.swift */; };
 		D2A818B42B974F770049C0E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818B32B974F770049C0E5 /* ContentView.swift */; };
 		D2A818B62B974F770049C0E5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818B52B974F770049C0E5 /* Item.swift */; };
@@ -21,6 +22,14 @@
 		D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818EF2B975F710049C0E5 /* SigninView.swift */; };
 		D2A818F42B9760FC0049C0E5 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */; };
 		D2A818F62B9764100049C0E5 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818F52B9764100049C0E5 /* SuccessView.swift */; };
+		D2E43E512B98A38D00B15946 /* SentOtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E502B98A38C00B15946 /* SentOtpView.swift */; };
+		D2E43E542B98A57000B15946 /* OtpModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E532B98A57000B15946 /* OtpModifer.swift */; };
+		D2E43E572B98AA5700B15946 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E562B98AA5700B15946 /* Category.swift */; };
+		D2E43E5A2B98AA6E00B15946 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E592B98AA6E00B15946 /* Product.swift */; };
+		D2E43E5C2B98AA8000B15946 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E5B2B98AA8000B15946 /* Chat.swift */; };
+		D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E5E2B98AA9900B15946 /* ImageCircle.swift */; };
+		D2E43E612B98AAB700B15946 /* ProductCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E602B98AAB700B15946 /* ProductCart.swift */; };
+		D2E43E652B98AAFF00B15946 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E43E642B98AAFF00B15946 /* DeleteAccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressEffectButtonStyle.swift; sourceTree = "<group>"; };
 		D2A818AE2B974F770049C0E5 /* AppOrderFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppOrderFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A818B12B974F770049C0E5 /* AppOrderFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodApp.swift; sourceTree = "<group>"; };
 		D2A818B32B974F770049C0E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +67,14 @@
 		D2A818EF2B975F710049C0E5 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		D2A818F52B9764100049C0E5 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		D2E43E502B98A38C00B15946 /* SentOtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentOtpView.swift; sourceTree = "<group>"; };
+		D2E43E532B98A57000B15946 /* OtpModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpModifer.swift; sourceTree = "<group>"; };
+		D2E43E562B98AA5700B15946 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D2E43E592B98AA6E00B15946 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		D2E43E5B2B98AA8000B15946 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		D2E43E5E2B98AA9900B15946 /* ImageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCircle.swift; sourceTree = "<group>"; };
+		D2E43E602B98AAB700B15946 /* ProductCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCart.swift; sourceTree = "<group>"; };
+		D2E43E642B98AAFF00B15946 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +103,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21E12382B97EE5D00DEEDDD /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */,
+				D2E43E562B98AA5700B15946 /* Category.swift */,
+				D2E43E592B98AA6E00B15946 /* Product.swift */,
+				D2E43E5B2B98AA8000B15946 /* Chat.swift */,
+				D2E43E602B98AAB700B15946 /* ProductCart.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		D2A818A52B974F770049C0E5 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +194,10 @@
 		D2A818DF2B9750710049C0E5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D2E43E5D2B98AA8400B15946 /* Image */,
+				D2E43E552B98AA3600B15946 /* Bar */,
+				D2E43E522B98A55500B15946 /* TextField */,
+				D21E12382B97EE5D00DEEDDD /* Button */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -171,6 +205,7 @@
 		D2A818E02B9750770049C0E5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D2E43E622B98AADB00B15946 /* DeleteAccount */,
 				D2A818F12B9760DD0049C0E5 /* ForgotPassword */,
 				D2A818ED2B975F4E0049C0E5 /* Signin */,
 				D2A818E32B9750BF0049C0E5 /* Login */,
@@ -247,6 +282,46 @@
 			isa = PBXGroup;
 			children = (
 				D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */,
+				D2E43E502B98A38C00B15946 /* SentOtpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2E43E522B98A55500B15946 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				D2E43E532B98A57000B15946 /* OtpModifer.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		D2E43E552B98AA3600B15946 /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bar;
+			sourceTree = "<group>";
+		};
+		D2E43E5D2B98AA8400B15946 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D2E43E5E2B98AA9900B15946 /* ImageCircle.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		D2E43E622B98AADB00B15946 /* DeleteAccount */ = {
+			isa = PBXGroup;
+			children = (
+				D2E43E632B98AAE800B15946 /* View */,
+			);
+			path = DeleteAccount;
+			sourceTree = "<group>";
+		};
+		D2E43E632B98AAE800B15946 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2E43E642B98AAFF00B15946 /* DeleteAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,12 +464,21 @@
 			files = (
 				D2A818F62B9764100049C0E5 /* SuccessView.swift in Sources */,
 				D2A818B42B974F770049C0E5 /* ContentView.swift in Sources */,
+				D2E43E512B98A38D00B15946 /* SentOtpView.swift in Sources */,
+				D21E123A2B97EE9000DEEDDD /* PressEffectButtonStyle.swift in Sources */,
 				D2A818F42B9760FC0049C0E5 /* ForgotPasswordView.swift in Sources */,
+				D2E43E542B98A57000B15946 /* OtpModifer.swift in Sources */,
 				D2A818B62B974F770049C0E5 /* Item.swift in Sources */,
+				D2E43E612B98AAB700B15946 /* ProductCart.swift in Sources */,
 				D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */,
 				D2A818B22B974F770049C0E5 /* AppOrderFoodApp.swift in Sources */,
+				D2E43E5C2B98AA8000B15946 /* Chat.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
 				D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */,
+				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
+				D2E43E652B98AAFF00B15946 /* DeleteAccountView.swift in Sources */,
+				D2E43E572B98AA5700B15946 /* Category.swift in Sources */,
+				D2E43E5A2B98AA6E00B15946 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,10 +58,9 @@ struct SigninView: View {
             VStack{
                 Button("SIGN IN"){
                     
-                }.buttonStyle(.borderedProminent)
-                    .font(.system(size: 20).bold())
-                    .tint(Color(hue: 0.535, saturation: 0.779, brightness: 0.677))
-                    .frame(width: 250,height: 100)
+                }   .font(.system(size: 20).bold())
+                    .buttonStyle(PressEffectButtonStyle(backgroundColor:Color(hue: 0.535, saturation: 0.779, brightness: 0.677)))
+
                 HStack{
                     Text("Already have an account?")
                         .font(.system(size: 15))

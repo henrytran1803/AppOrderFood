@@ -60,10 +60,10 @@ struct LoginView: View {
                     .font(.system(size: 15).bold())
                 Button("SIGN UP"){
                     
-                }.buttonStyle(.borderedProminent)
+                }//.buttonStyle(.borderedProminent)
                     .font(.system(size: 20).bold())
-                    .tint(Color(hue: 0.535, saturation: 0.779, brightness: 0.677))
-                    .frame(width: 250,height: 100)
+                    .buttonStyle(PressEffectButtonStyle(backgroundColor:Color(hue: 0.535, saturation: 0.779, brightness: 0.677)))
+
                 HStack{
                     Text("Don't have an account?")
                         .font(.system(size: 15))
@@ -71,7 +71,7 @@ struct LoginView: View {
                         isShowingSignin = true
                     }.foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.149, green: 0.388, blue: 0.588)/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 15).bold())
-                              
+
                 }
             }
         }  .fullScreenCover(isPresented: $isShowingSignin) {
