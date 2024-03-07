@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20D9F022B99633700D183BA /* CategoryShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F012B99633700D183BA /* CategoryShow.swift */; };
+		D20D9F042B996A5700D183BA /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F032B996A5700D183BA /* ProductModel.swift */; };
+		D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F082B996E1F00D183BA /* DetailProductModel.swift */; };
+		D20D9F0B2B996E3500D183BA /* DetailProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F0A2B996E3500D183BA /* DetailProductView.swift */; };
 		D21E123A2B97EE9000DEEDDD /* PressEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */; };
 		D2A818B22B974F770049C0E5 /* AppOrderFoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818B12B974F770049C0E5 /* AppOrderFoodApp.swift */; };
 		D2A818B42B974F770049C0E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818B32B974F770049C0E5 /* ContentView.swift */; };
@@ -50,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20D9F012B99633700D183BA /* CategoryShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShow.swift; sourceTree = "<group>"; };
+		D20D9F032B996A5700D183BA /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		D20D9F082B996E1F00D183BA /* DetailProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductModel.swift; sourceTree = "<group>"; };
+		D20D9F0A2B996E3500D183BA /* DetailProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductView.swift; sourceTree = "<group>"; };
 		D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressEffectButtonStyle.swift; sourceTree = "<group>"; };
 		D2A818AE2B974F770049C0E5 /* AppOrderFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppOrderFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A818B12B974F770049C0E5 /* AppOrderFoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodApp.swift; sourceTree = "<group>"; };
@@ -103,6 +111,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D20D9EFE2B995E2200D183BA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D20D9F002B995E2F00D183BA /* Model */,
+				D20D9EFF2B995E2900D183BA /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D20D9EFF2B995E2900D183BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D20D9F002B995E2F00D183BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D20D9F012B99633700D183BA /* CategoryShow.swift */,
+				D20D9F032B996A5700D183BA /* ProductModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D20D9F052B996DF000D183BA /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				D20D9F072B996E0100D183BA /* Model */,
+				D20D9F062B996DFA00D183BA /* View */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		D20D9F062B996DFA00D183BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D20D9F0A2B996E3500D183BA /* DetailProductView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D20D9F072B996E0100D183BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D20D9F082B996E1F00D183BA /* DetailProductModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D21E12382B97EE5D00DEEDDD /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +263,8 @@
 		D2A818E02B9750770049C0E5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D20D9F052B996DF000D183BA /* Product */,
+				D20D9EFE2B995E2200D183BA /* Home */,
 				D2E43E622B98AADB00B15946 /* DeleteAccount */,
 				D2A818F12B9760DD0049C0E5 /* ForgotPassword */,
 				D2A818ED2B975F4E0049C0E5 /* Signin */,
@@ -467,15 +527,19 @@
 				D2E43E512B98A38D00B15946 /* SentOtpView.swift in Sources */,
 				D21E123A2B97EE9000DEEDDD /* PressEffectButtonStyle.swift in Sources */,
 				D2A818F42B9760FC0049C0E5 /* ForgotPasswordView.swift in Sources */,
+				D20D9F022B99633700D183BA /* CategoryShow.swift in Sources */,
 				D2E43E542B98A57000B15946 /* OtpModifer.swift in Sources */,
 				D2A818B62B974F770049C0E5 /* Item.swift in Sources */,
 				D2E43E612B98AAB700B15946 /* ProductCart.swift in Sources */,
+				D20D9F0B2B996E3500D183BA /* DetailProductView.swift in Sources */,
 				D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */,
+				D20D9F042B996A5700D183BA /* ProductModel.swift in Sources */,
 				D2A818B22B974F770049C0E5 /* AppOrderFoodApp.swift in Sources */,
 				D2E43E5C2B98AA8000B15946 /* Chat.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
 				D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */,
 				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
+				D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */,
 				D2E43E652B98AAFF00B15946 /* DeleteAccountView.swift in Sources */,
 				D2E43E572B98AA5700B15946 /* Category.swift in Sources */,
 				D2E43E5A2B98AA6E00B15946 /* Product.swift in Sources */,
