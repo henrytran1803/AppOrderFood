@@ -12,72 +12,44 @@ struct ItemCartView: View {
     let size: [String: Double] = ["M": 1, "S": 2, "L": 3, "XL": 4]
     @State var product: ProductCartModel
     var body: some View {
-        ZStack{
-            HStack{
-                Image(product.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 80)
-                    .padding(.leading)
-                VStack(alignment: .leading) {
-                    Text(product.name)
-                    Text(product.category)
+        HStack{
+            Image(product.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 80)
+                .padding(.leading)
+            VStack(alignment: .leading) {
+                Text(product.name)
+                Text(product.category)
+                    .font(.system(size: 10))
+                HStack{
+                    Text("Size \(product.size)")
+                        .padding()
                         .font(.system(size: 10))
-                    HStack{
-                        Text("Size")
-                            .padding(.leading)
-                            .font(.system(size: 10))
-                        Picker("", selection: $product.size) {
-                            ForEach(Array(size.keys.sorted()), id: \.self) { key in
-                                Text("\(key) ")
-                                .font(.system(size: 10)) 
-                            }
-                        }
-                        .padding(.trailing)
-                        .pickerStyle(.menu)
-                        .foregroundColor(.blue)
-                    }
+                    
+                }.foregroundColor(.blue)
                     .background(Color.blue.opacity(0.2))
                     .cornerRadius(20)
-                }
-                Spacer()
-                VStack {
-                    HStack{
-                        Button(action: {
-                            if product.quality > 1 {
-                                product.quality -= 1
-                            }
-                        }) {
-                            Text("-")
-                                .foregroundColor(.black)
-                        }
-                        .padding(.leading)
-                        .background(Color.yellow.opacity(0.2))
-                        .cornerRadius(10)
-                        Text("\(product.quality)")
-                            .font(.system(size: 15))
-                        Button(action: {
-                            product.quality += 1
-                        }) {
-                            Text("+")
-                                .foregroundColor(.black)
-                        }
-                        .padding(.trailing)
-                        .background(Color.yellow.opacity(0.2))
-                        .cornerRadius(10)
-                    }.background(Color.yellow)
-                        .cornerRadius(12)
-                    Text("Total: \(String(format: "%.1f", totalPrice())) VND")
-                        .font(.system(size: 10))
-                        .foregroundColor(.red)
-                        
-                }
-                .padding(.trailing)
             }
-            .padding()
+            
+            Spacer()
+            VStack {
+                HStack{
+                    
+                    Text("\(product.quality)")
+                        .font(.system(size: 15))
+                        .padding()
+                }.background(Color.yellow)
+                    .cornerRadius(12)
+                Text("Total: \(String(format: "%.1f", totalPrice())) VND")
+                    .font(.system(size: 10))
+                    .foregroundColor(.red)
+                
+            }
         }
-    }
-    
+                .padding(.trailing)
+
+        }
     private func totalPrice() -> Double {
         return product.price * Double(product.quality) * (size[product.size] ?? 1)
     }

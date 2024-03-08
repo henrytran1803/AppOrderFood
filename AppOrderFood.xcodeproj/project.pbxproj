@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2031FC82B9AEC1A00ECBAEE /* UpdateProductCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2031FC72B9AEC1A00ECBAEE /* UpdateProductCartView.swift */; };
 		D20D9F022B99633700D183BA /* CategoryShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F012B99633700D183BA /* CategoryShow.swift */; };
 		D20D9F042B996A5700D183BA /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F032B996A5700D183BA /* ProductModel.swift */; };
 		D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F082B996E1F00D183BA /* DetailProductModel.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D2031FC72B9AEC1A00ECBAEE /* UpdateProductCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProductCartView.swift; sourceTree = "<group>"; };
 		D20D9F012B99633700D183BA /* CategoryShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShow.swift; sourceTree = "<group>"; };
 		D20D9F032B996A5700D183BA /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		D20D9F082B996E1F00D183BA /* DetailProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductModel.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 			children = (
 				D2ADAC422B9A9926008A1861 /* ItemCartView.swift */,
 				D2ADAC462B9A9B94008A1861 /* CartView.swift */,
+				D2031FC72B9AEC1A00ECBAEE /* UpdateProductCartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
 				D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */,
 				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
+				D2031FC82B9AEC1A00ECBAEE /* UpdateProductCartView.swift in Sources */,
 				D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */,
 				D2E43E652B98AAFF00B15946 /* DeleteAccountView.swift in Sources */,
 				D2E43E572B98AA5700B15946 /* Category.swift in Sources */,
