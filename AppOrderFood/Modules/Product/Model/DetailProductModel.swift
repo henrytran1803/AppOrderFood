@@ -13,19 +13,21 @@ struct DetailProductModel {
     let image : String
     let price: Double
     let quality: Int
-    init(id: UUID, name: String, category: String, image: String, price: Double, quality: Int) {
+    let detail : String
+    init(id: UUID, name: String, category: String, image: String, price: Double, quality: Int, detail: String) {
         self.id = id
         self.name = name
         self.category = category
         self.image = image
         self.price = price
         self.quality = quality
+        self.detail = detail
     }
 }
 
 
 struct MockDetailProduct {
-    static let product = DetailProductModel(id: UUID(), name: "Hamburger sieu to", category: "hamburger", image: "hamburger", price: 100, quality: 20)
+    static let product = DetailProductModel(id: UUID(), name: "Hamburger sieu to", category: "hamburger", image: "hamburger", price: 100, quality: 20, detail: "Đây là hamburger có nhiều vị khác nhau vị matcha vị socola có nhiều size từ bé đến lớn ssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     
     
     
