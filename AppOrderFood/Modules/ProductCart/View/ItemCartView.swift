@@ -31,6 +31,7 @@ struct ItemCartView: View {
                     .background(Color.blue.opacity(0.2))
                     .cornerRadius(20)
             }
+            .cornerRadius(20)
             
             Spacer()
             VStack {

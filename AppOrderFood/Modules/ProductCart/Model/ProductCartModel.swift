@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 struct ProductCartModel:Identifiable {
     var id: UUID

@@ -18,7 +18,7 @@ struct CartView: View {
                 Rectangle()
                     .cornerRadius(40)
                     .frame(height: 100)
-                
+                 
                 Text("CART")
                     .padding(.top)
                     .foregroundColor(.white)
