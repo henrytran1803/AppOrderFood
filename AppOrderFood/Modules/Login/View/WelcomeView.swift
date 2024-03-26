@@ -21,6 +21,7 @@ struct WelcomeView: View {
                 signView()
                     .opacity(Dshow ? 0.95 :0)
                         .scaleEffect(Dshow ? 1 : 0.8)
+                        .animation(.smooth, value: Dshow)
                 
             }
         }
