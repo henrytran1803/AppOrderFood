@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SigninView: View {
+    @Binding var show : Bool
+    @Binding var isSignin : Bool
     @State var userName = ""
     @State var passWord = ""
     @State var repeatPassword = ""
@@ -15,69 +17,72 @@ struct SigninView: View {
     @State var signIn = false
     var body: some View {
         VStack{
-            Spacer()
             HStack{
-                Image("cloud1")
-                Image("cloud1")
+                Button(action: {
+                        show.toggle()
+                        isSignin.toggle()
+                }, label: {
+                    Image(systemName: "arrow.backward")
+                        .resizable()
+                        .frame(width: 30,height: 30)
+                        .foregroundStyle(.black)
+                }).padding()
+                
                 Spacer()
-                Image("cloud2")
             }
+
             Spacer()
-            Text("CREATE NEW!")
-                .font(.system(size: 40).bold())
-                .foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.629, green: 0.824, blue: 0.979)/*@END_MENU_TOKEN@*/)
-            Text("More users, more discount!")
+            Text("Đăng ký tài khoản mới")
+                .bold()
+                .font(.title)
+                .foregroundColor(.primary)
+            Text("Đăng ký ngay để được ăn ngon nhé")
                 .foregroundColor(.secondary)
             Spacer()
-            TextField("UserName", text: $userName)
+            TextField("User name", text:$userName)
                 .padding()
-                .background(Color("textField").opacity(0.3))
+                .background(Color(.white))
                 .cornerRadius(8)
-                .padding(.horizontal)
                 .font(.system(size: 14))
                 .multilineTextAlignment(.leading)
-                .padding(.bottom, 20)
-
-            TextField("PassWord", text: $passWord)
-                .padding()
-                .background(Color("textField").opacity(0.3))
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .font(.system(size: 14))
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, 20)
-            TextField("Repeat Password", text:$repeatPassword)
-                .padding()
-                .background(Color("textField").opacity(0.3))
-                .cornerRadius(8)
-                .padding(.horizontal)
-                .font(.system(size: 14))
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, 20)
-            Spacer()
-            VStack{
-                Button("SIGN IN"){
-                    
-                }   .font(.system(size: 20).bold())
-                    .buttonStyle(PressEffectButtonStyle(backgroundColor:Color(hue: 0.535, saturation: 0.779, brightness: 0.677)))
-
-                HStack{
-                    Text("Already have an account?")
-                        .font(.system(size: 15))
-                    Button("Sign up"){
-                        isShowingSignup = true
-                    }.foregroundColor(/*@START_MENU_TOKEN@*/Color(red: 0.149, green: 0.388, blue: 0.588)/*@END_MENU_TOKEN@*/)
-                        .font(.system(size: 15).bold())
-                              
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 0.1)
+                        .foregroundStyle(.black)
                 }
-            }
-        }  .fullScreenCover(isPresented:$isShowingSignup) {
-            LoginView()
-        }
-       
+            SecureField("Password", text:$passWord)
+                .padding()
+                .background(Color(.white))
+                .cornerRadius(8)
+                .font(.system(size: 14))
+                .multilineTextAlignment(.leading)
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 0.1)
+                        .foregroundStyle(.black)
+                }
+            SecureField("Repeat password", text:$repeatPassword)
+                .padding()
+                .background(Color(.white))
+                .cornerRadius(8)
+                .font(.system(size: 14))
+                .multilineTextAlignment(.leading)
+                .overlay{
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 0.1)
+                        .foregroundStyle(.black)
+                }
+
+        Spacer()
+            ButtonStyleWelcome(icon: "", title: "Đăng nhập"){
+                
+            }.padding()
+        }.padding()
+            .opacity(show ? 1 :0)
+            .scaleEffect(show ? 1 : 0.8)
     }
 }
 
 #Preview {
-    SigninView()
+    SigninView(show: .constant(false), isSignin: .constant(true))
 }

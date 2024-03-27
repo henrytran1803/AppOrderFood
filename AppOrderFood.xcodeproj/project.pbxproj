@@ -23,7 +23,6 @@
 		D2A818C52B974F7A0049C0E5 /* AppOrderFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818C42B974F7A0049C0E5 /* AppOrderFoodTests.swift */; };
 		D2A818CF2B974F7A0049C0E5 /* AppOrderFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818CE2B974F7A0049C0E5 /* AppOrderFoodUITests.swift */; };
 		D2A818D12B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818D02B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift */; };
-		D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */; };
 		D2A818EA2B9756550049C0E5 /* SplineRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = D2A818E92B9756550049C0E5 /* SplineRuntime */; };
 		D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818EB2B975B390049C0E5 /* LoginView.swift */; };
 		D2A818F02B975F710049C0E5 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A818EF2B975F710049C0E5 /* SigninView.swift */; };
@@ -83,7 +82,6 @@
 		D2A818CA2B974F7A0049C0E5 /* AppOrderFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppOrderFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A818CE2B974F7A0049C0E5 /* AppOrderFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodUITests.swift; sourceTree = "<group>"; };
 		D2A818D02B974F7A0049C0E5 /* AppOrderFoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrderFoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingstartedView.swift; sourceTree = "<group>"; };
 		D2A818EB2B975B390049C0E5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D2A818EF2B975F710049C0E5 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		D2A818F32B9760FC0049C0E5 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -332,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				D2EE116D2BB267DE00A9117E /* PlayerView.swift */,
-				D2A818E62B9750FF0049C0E5 /* GettingstartedView.swift */,
 				D2A818EB2B975B390049C0E5 /* LoginView.swift */,
 				D2EE116B2BB265FC00A9117E /* WelcomeView.swift */,
 				D2339C312BB2AE7E001A1AB3 /* BottomWelcomeView.swift */,
@@ -608,7 +605,6 @@
 				D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */,
 				D2EE116E2BB267DE00A9117E /* PlayerView.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
-				D2A818E72B9750FF0049C0E5 /* GettingstartedView.swift in Sources */,
 				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
 				D2031FC82B9AEC1A00ECBAEE /* UpdateProductCartView.swift in Sources */,
 				D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */,
