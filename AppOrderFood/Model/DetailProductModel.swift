@@ -6,15 +6,15 @@
 //
 
 import Foundation
-struct DetailProductModel {
-    let id: UUID
-    let name: String
-    let category : String
-    let image : String
-    let star : Double
-    let price: Double
-    let quality: Int
-    let detail : String
+struct DetailProductModel :Observable{
+    var id: UUID
+    var name: String
+    var category : String
+    var image : String
+    var star : Double
+    var price: Double
+    var quality: Int
+    var detail : String
     init(id: UUID, name: String, category: String, image: String, star: Double, price: Double, quality: Int, detail: String) {
         self.id = id
         self.name = name
