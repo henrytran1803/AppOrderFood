@@ -117,5 +117,5 @@ struct BottomProduct: View {
 }
 
 #Preview {
-    BottomProduct(product: MockDetailProduct.product)
+    BottomProduct(product: MockDetailProduct.products[1])
 }

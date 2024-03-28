@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoryModel : Identifiable {
+struct CategoryModel : Identifiable, Equatable  {
     var id: UUID
     var name : String
     var image : String
@@ -19,5 +19,9 @@ struct CategoryModel : Identifiable {
 }
 
 struct MockCategoryModel {
-    static var category = CategoryModel(id: UUID(), name: "Hamburger", image: "hamburger")
+    static var categorys = [CategoryModel(id: UUID(), name: "FastFood", image: "hamburger"),
+                            CategoryModel(id: UUID(), name: "Salad", image: "imgSalad"),
+                            CategoryModel(id: UUID(), name: "Vegtable", image: "imgVegtable"),
+                            CategoryModel(id: UUID(), name: "HeathyFood", image: "imgNoodle"),
+    ]
 }

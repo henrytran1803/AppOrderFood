@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct ListCategory: View {
-    @State var categorys : [CategoryModel] = [MockCategoryModel.category, MockCategoryModel.category , MockCategoryModel.category]
-//    @State var selected = self.categorys[0]
+    @State var categorys: [CategoryModel] = MockCategoryModel.categorys
+    @Binding var selectedCategory: CategoryModel?
+    
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 ForEach(categorys) { category in
                     Category(category: category)
+                        .onTapGesture {
+                            // Cập nhật loại được chọn khi người dùng nhấn vào nó
+                            self.selectedCategory = category
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(category == selectedCategory ? .blue : .clear)
+                        )
                 }
             }
             .padding(.horizontal)
@@ -22,6 +31,6 @@ struct ListCategory: View {
     }
 }
 
-#Preview {
-    ListCategory()
-}
+//#Preview {
+//    ListCategory(selectedCategory: MockCategoryModel.categorys[1])
+//}

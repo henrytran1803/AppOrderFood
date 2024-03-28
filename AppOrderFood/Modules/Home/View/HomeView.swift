@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var search = ""
+    @State var selectedCategory: CategoryModel?
     var body: some View {
         VStack{
             HStack{
@@ -34,8 +35,7 @@ struct HomeView: View {
                         .padding(.horizontal, 16)
                         .foregroundColor(.gray)
                 )
-            ScrollView{
-                ListCategory()
+                ListCategory(selectedCategory: $selectedCategory)
                 HStack{
                     Text("Favorite")
                         .font(.title2)
@@ -44,10 +44,18 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-            }
+                ListProduct(products: MockDetailProduct.products)
+            
             
         }.padding(.top, 60)
     }
+//    var selectedProducts: [DetailProductModel] {
+//        if let selectedCategory = selectedCategory {
+//            return MockDetailProduct.products.filter { $0.category == selectedCategory }
+//        } else {
+//            return MockDetailProduct.products
+//        }
+//    }
 }
 
 #Preview {

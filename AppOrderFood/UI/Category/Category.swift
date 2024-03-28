@@ -31,5 +31,5 @@ struct Category: View {
 }
 
 #Preview {
-    Category(category: MockCategoryModel.category)
+    Category(category: MockCategoryModel.categorys[1])
 }
