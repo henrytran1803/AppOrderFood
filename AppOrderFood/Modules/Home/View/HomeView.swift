@@ -11,6 +11,7 @@ struct HomeView: View {
     @State var search = ""
     @State var selectedCategory: CategoryModel?
     var body: some View {
+        
         VStack{
             HStack{
                 VStack(alignment: .leading){
