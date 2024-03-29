@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CartView: View {
     @State var products  = MockProductCartModel.products
+    @State var isDisscount = false
+    @State var disount = ""
     var body: some View {
         VStack{
             HStack{
@@ -39,7 +41,7 @@ struct CartView: View {
                             
                         }
                     }
-            }).padding(.all)
+            }).padding(.horizontal)
             BottomCartView()
                 
         }
