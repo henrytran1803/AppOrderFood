@@ -14,7 +14,7 @@ struct BottomCartView: View {
             Spacer()
             RoundedRectangle(cornerRadius: 25)
                 .foregroundColor(.white)
-                .frame(width: .infinity,height: 350)
+                .frame(width: .infinity,height: 380)
                 .overlay{
                     VStack{
                         HStack{
@@ -55,7 +55,7 @@ struct BottomCartView: View {
                         Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .foregroundColor(Color("bgproduct"))
-                                .frame(width: .infinity, height: 80)
+                                .frame(width: .infinity, height: 60)
                                 .overlay{
                                     HStack{
                                         Text("Checkout")
@@ -66,7 +66,8 @@ struct BottomCartView: View {
                                             .font(.system(size: 20))
                                     }
                                 }
-                        }).padding([.leading, .bottom, .trailing])
+                        }).padding([.leading, .trailing])
+                            .padding(.bottom, 70)
                     }
                     
                     

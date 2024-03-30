@@ -21,7 +21,7 @@ struct TabView: View {
                 case .house:
                     HomeView()
                 case .cart:
-                    WelcomeView()
+                    CartView()
                 case .person:
                     WelcomeView()
                 }
