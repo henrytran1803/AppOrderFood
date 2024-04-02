@@ -10,6 +10,7 @@
 		D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D9F082B996E1F00D183BA /* DetailProductModel.swift */; };
 		D21E123A2B97EE9000DEEDDD /* PressEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */; };
 		D2268B082BB2B2560087E1B6 /* signView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2268B072BB2B2560087E1B6 /* signView.swift */; };
+		D2292A132BBC46800052805A /* MainPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2292A122BBC46800052805A /* MainPayment.swift */; };
 		D2339C322BB2AE7E001A1AB3 /* BottomWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2339C312BB2AE7E001A1AB3 /* BottomWelcomeView.swift */; };
 		D28A45442BB844F800DEF9DE /* RounderProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A45432BB844F800DEF9DE /* RounderProfile.swift */; };
 		D28A45462BB8472100DEF9DE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A45452BB8472100DEF9DE /* UserModel.swift */; };
@@ -80,6 +81,7 @@
 		D20D9F082B996E1F00D183BA /* DetailProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductModel.swift; sourceTree = "<group>"; };
 		D21E12392B97EE9000DEEDDD /* PressEffectButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressEffectButtonStyle.swift; sourceTree = "<group>"; };
 		D2268B072BB2B2560087E1B6 /* signView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signView.swift; sourceTree = "<group>"; };
+		D2292A122BBC46800052805A /* MainPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPayment.swift; sourceTree = "<group>"; };
 		D2339C312BB2AE7E001A1AB3 /* BottomWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomWelcomeView.swift; sourceTree = "<group>"; };
 		D28A45432BB844F800DEF9DE /* RounderProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RounderProfile.swift; sourceTree = "<group>"; };
 		D28A45452BB8472100DEF9DE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -213,8 +215,17 @@
 		D2268B092BB2B2650087E1B6 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				D2292A112BBC46680052805A /* View */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		D2292A112BBC46680052805A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2292A122BBC46800052805A /* MainPayment.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D28A45412BB8447C00DEF9DE /* Profile */ = {
@@ -663,6 +674,7 @@
 				D28A45442BB844F800DEF9DE /* RounderProfile.swift in Sources */,
 				D28A45482BB84A5800DEF9DE /* ProfileView.swift in Sources */,
 				D2E43E542B98A57000B15946 /* OtpModifer.swift in Sources */,
+				D2292A132BBC46800052805A /* MainPayment.swift in Sources */,
 				D2A7AA6E2BB5105E001841A7 /* TabView.swift in Sources */,
 				D2339C322BB2AE7E001A1AB3 /* BottomWelcomeView.swift in Sources */,
 				D2268B082BB2B2560087E1B6 /* signView.swift in Sources */,
