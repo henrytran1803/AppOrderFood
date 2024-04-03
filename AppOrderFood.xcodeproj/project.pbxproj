@@ -17,6 +17,7 @@
 		D28A45482BB84A5800DEF9DE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A45472BB84A5800DEF9DE /* ProfileView.swift */; };
 		D28A454A2BB84A8600DEF9DE /* BottomProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A45492BB84A8600DEF9DE /* BottomProfileView.swift */; };
 		D28A454C2BB84A9F00DEF9DE /* BottomInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A454B2BB84A9F00DEF9DE /* BottomInfoView.swift */; };
+		D291102F2BBD8BCF003C6086 /* ListProductCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291102E2BBD8BCF003C6086 /* ListProductCheckout.swift */; };
 		D2A0F1992BBCDB38008C534A /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0F1982BBCDB38008C534A /* CheckoutView.swift */; };
 		D2A0F19B2BBCDB48008C534A /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0F19A2BBCDB48008C534A /* PaymentView.swift */; };
 		D2A0F19D2BBCDB55008C534A /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A0F19C2BBCDB55008C534A /* SuccessView.swift */; };
@@ -91,6 +92,7 @@
 		D28A45472BB84A5800DEF9DE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D28A45492BB84A8600DEF9DE /* BottomProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomProfileView.swift; sourceTree = "<group>"; };
 		D28A454B2BB84A9F00DEF9DE /* BottomInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInfoView.swift; sourceTree = "<group>"; };
+		D291102E2BBD8BCF003C6086 /* ListProductCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductCheckout.swift; sourceTree = "<group>"; };
 		D2A0F1982BBCDB38008C534A /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		D2A0F19A2BBCDB48008C534A /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		D2A0F19C2BBCDB55008C534A /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				D2A0F1982BBCDB38008C534A /* CheckoutView.swift */,
 				D2A0F19A2BBCDB48008C534A /* PaymentView.swift */,
 				D2A0F19C2BBCDB55008C534A /* SuccessView.swift */,
+				D291102E2BBD8BCF003C6086 /* ListProductCheckout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */,
 				D2C906002BB6A49F007F0FE6 /* DiscountShape.swift in Sources */,
 				D2EE116E2BB267DE00A9117E /* PlayerView.swift in Sources */,
+				D291102F2BBD8BCF003C6086 /* ListProductCheckout.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
 				D28A454A2BB84A8600DEF9DE /* BottomProfileView.swift in Sources */,
 				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
