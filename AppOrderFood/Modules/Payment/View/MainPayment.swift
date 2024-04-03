@@ -10,7 +10,7 @@ enum checkout{
     case checkout, payment, success
 }
 struct MainPayment: View {
-    @State var isCheckout: checkout = .payment
+    @State var isCheckout: checkout = .checkout
     var body: some View {
         VStack{
             HStack{
