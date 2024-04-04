@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BottomCartView: View {
+    
+    @Binding var isCheckout:Bool
     var body: some View {
     
         VStack{
@@ -52,7 +54,7 @@ struct BottomCartView: View {
                         }.padding([.leading, .bottom, .trailing])
                         
                         
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                        Button(action: {isCheckout = true}, label: {
                             RoundedRectangle(cornerRadius: 25.0)
                                 .foregroundColor(Color("bgproduct"))
                                 .frame(width: .infinity, height: 60)
@@ -77,5 +79,5 @@ struct BottomCartView: View {
 }
 
 #Preview {
-    BottomCartView()
+    BottomCartView(isCheckout: .constant(true))
 }

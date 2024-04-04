@@ -13,6 +13,7 @@ struct CartView: View {
     @State var isDisscount = false
     @State var isDiscountShown = false
     @State var disount = ""
+    @State var isCheckout = true
     var body: some View {
         NavigationView{
             VStack{
@@ -45,7 +46,7 @@ struct CartView: View {
                             }
                         }
                 }).padding(.horizontal)
-                BottomCartView()
+                BottomCartView(isCheckout: $isCheckout)
                 NavigationLink(
                     destination: ListDiscount(discounts: discounts ), // Điều hướng đến ListDiscountView
                     isActive: $isDiscountShown, // Kiểm tra trạng thái hiển thị của ListDiscountView
@@ -57,7 +58,11 @@ struct CartView: View {
             }
             .ignoresSafeArea()
             .background(Color("bgcart"))
-        }
+        }.sheet(isPresented: $isCheckout, content: {
+            MainPayment()
+                .presentationDetents([.height(550), .large])
+                .presentationDragIndicator(.automatic)
+        })
     }
 }
 

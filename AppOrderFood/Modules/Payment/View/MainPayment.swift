@@ -13,54 +13,78 @@ struct MainPayment: View {
     @State var isCheckout: checkout = .payment
     @State var selectedRadioButton = "Cash"
     var body: some View {
-        VStack{
-            HStack{
-                Image(systemName: "circle.circle.fill")
-                    .renderingMode(.original) // <1>
-                    .foregroundColor(Color(.yellow)) // <2>
-                    .font(.system(size: 20))
-                Rectangle()
-                    .frame(width:isCheckout == .checkout ?0: 50,height: 1)
-                    .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: isCheckout)
+        Spacer()
+            VStack{
+                HStack{
+                    Image(systemName: "circle.circle.fill")
+                        .renderingMode(.original) // <1>
+                        .foregroundColor(Color(.yellow)) // <2>
+                        .font(.system(size: 20))
+                    Rectangle()
+                        .frame(width:isCheckout == .checkout ?0: 50,height: 1)
+                        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: isCheckout)
+                    if (isCheckout == .checkout){
+                        Spacer()
+                    }
+                    Image(systemName:isCheckout == .checkout ? "circle.fill": "circle.circle.fill")
+                        .renderingMode(.original) // <1>
+                        .foregroundColor(Color(isCheckout ==  .checkout ? .gray : .yellow)) //
+                        .font(.system(size: 20))
+                    Rectangle()
+                        .frame(width:isCheckout == .success ? 50 : 0 ,height:  1)
+                        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: isCheckout)
+                    if (isCheckout == .payment || isCheckout == .checkout){
+                        Spacer()
+                    }
+                   
+                    Image(systemName: isCheckout ==  .success ? "circle.circle.fill" : "circle.fill"  )
+                        .renderingMode(.original) // <1>
+                        .foregroundColor(Color(isCheckout ==  .success ? .yellow : .gray)) // <2>
+                        .font(.system(size: 20))
+                    
+                }.frame(width: 200,height: 30)
+                HStack{
+                    Picker(selection: $isCheckout, label: Text("Checkout Status")) {
+                        Text("Checkout").tag(checkout.checkout)
+                        Text("Payment").tag(checkout.payment)
+                        Text("Success").tag(checkout.success)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 200)
+                }
+                Spacer()
                 if (isCheckout == .checkout){
-                    Spacer()
+                    ProductCheckout(isCheckout: $isCheckout , selectedRadioButton: $selectedRadioButton)
+                }else if (isCheckout == .payment){
+                    PaymentView(selectedRadioButton: $selectedRadioButton, isCheckout: $isCheckout)
+                } else {
+//                    Checkout()
                 }
-                Image(systemName:isCheckout == .checkout ? "circle.fill": "circle.circle.fill")
-                    .renderingMode(.original) // <1>
-                    .foregroundColor(Color(isCheckout ==  .checkout ? .gray : .yellow)) //
-                    .font(.system(size: 20))
-                Rectangle()
-                    .frame(width:isCheckout == .success ? 50 : 0 ,height:  1)
-                    .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: isCheckout)
-                if (isCheckout == .payment || isCheckout == .checkout){
-                    Spacer()
-                }
-               
-                Image(systemName: isCheckout ==  .success ? "circle.circle.fill" : "circle.fill"  )
-                    .renderingMode(.original) // <1>
-                    .foregroundColor(Color(isCheckout ==  .success ? .yellow : .gray)) // <2>
-                    .font(.system(size: 20))
-                
-            }.frame(width: 200,height: 30)
-            
-            Spacer()
-            HStack{
-                Picker(selection: $isCheckout, label: Text("Checkout Status")) {
-                    Text("Checkout").tag(checkout.checkout)
-                    Text("Payment").tag(checkout.payment)
-                    Text("Success").tag(checkout.success)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .frame(width: 200)
             }
-            
-            if (isCheckout == .checkout){
-                ProductCheckout(isCheckout: $isCheckout , selectedRadioButton: $selectedRadioButton)
-            }else if (isCheckout == .payment){
-                PaymentView(selectedRadioButton: $selectedRadioButton)
-            }
-        }
     }
+//    func Checkout() -> some View{
+//        if self.selectedRadioButton == "Cash" {
+//            Cashpayment()
+//        }else if self.selectedRadioButton == "Crypto" {
+//            Cryptopayment()
+//        } else{
+//            ApplePayment()
+//        }
+//    }
+//    
+//    
+//    func Cashpayment() -> some View{
+//        return ApplePayment()
+//    }
+//    
+//    func Cryptopayment() -> any View{
+//        return ApplePayment()
+//    }
+//    
+//    func ApplePayment() -> any View {
+//        return ApplePayment()
+//    }
+    
 }
 
 #Preview {

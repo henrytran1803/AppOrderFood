@@ -25,15 +25,37 @@ struct FavoriteLandmarkTip: Tip {
     }
 }
 struct PaymentWithCash: View {
-    @State var isAccept = false
+    @Binding var isAccept:Bool
     @State var isRule = false
+    @State var total = 100
+    @State var address = "97 man thien hiep phu quan 8"
     var favoriteLandmarkTip = FavoriteLandmarkTip()
     var body: some View {
         NavigationStack{
 //            ProgressView()
 //                .progressViewStyle(.automatic)
             
-            
+            HStack{
+                Text("TOTAL")
+                    .bold()
+                    .font(.title)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("\(total)")
+                    .bold()
+                    .font(.title)
+                    .foregroundStyle(.secondary)
+            }.padding()
+            HStack{
+                Text("ADDRESS")
+                    .bold()
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text(address)
+                    .bold()
+                    .foregroundStyle(.secondary)
+            }.padding()
+            Spacer()
             TipView(favoriteLandmarkTip, arrowEdge: .bottom)
             HStack{
                 Button(action: {isAccept.toggle()}, label: {
@@ -51,23 +73,7 @@ struct PaymentWithCash: View {
                 }
                
             }
-            Button(action: {}, label: {
-                RoundedRectangle(cornerRadius: 25.0)
-                    .foregroundColor(Color("bgproduct"))
-                    .frame(width: .infinity, height: 60)
-                    .overlay{
-                        HStack{
-                            Text("NEXT")
-                                .foregroundColor(.white)
-                                .font(.system(size: 20))
-                            Image(systemName: "arrowtriangle.right.fill")
-                                .foregroundColor(Color("bgbutton"))
-                                .font(.system(size: 20))
-                        }
-                    }
-            }).disabled(!isAccept)
-            .padding([.leading, .trailing])
-                .padding(.bottom, 70)
+            
             .task {
                 try? Tips.configure([
                     .displayFrequency(.immediate),
@@ -79,5 +85,5 @@ struct PaymentWithCash: View {
 }
 
 #Preview {
-    PaymentWithCash()
+    PaymentWithCash(isAccept: .constant(false))
 }
