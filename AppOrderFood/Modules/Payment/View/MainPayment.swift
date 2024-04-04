@@ -10,7 +10,8 @@ enum checkout{
     case checkout, payment, success
 }
 struct MainPayment: View {
-    @State var isCheckout: checkout = .checkout
+    @State var isCheckout: checkout = .payment
+    @State var selectedRadioButton = "Cash"
     var body: some View {
         VStack{
             HStack{
@@ -42,7 +43,7 @@ struct MainPayment: View {
                 
             }.frame(width: 200,height: 30)
             
-            
+            Spacer()
             HStack{
                 Picker(selection: $isCheckout, label: Text("Checkout Status")) {
                     Text("Checkout").tag(checkout.checkout)
@@ -51,6 +52,12 @@ struct MainPayment: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(width: 200)
+            }
+            
+            if (isCheckout == .checkout){
+                ProductCheckout(isCheckout: $isCheckout , selectedRadioButton: $selectedRadioButton)
+            }else if (isCheckout == .payment){
+                PaymentView(selectedRadioButton: $selectedRadioButton)
             }
         }
     }

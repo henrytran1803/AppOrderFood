@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PaymentView: View {
+    @Binding var selectedRadioButton: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            if (selectedRadioButton == "ApplePay"){
+                PaymentWithApplePay()
+            }else if (selectedRadioButton == "Crypto"){
+                PaymentWithCrypto()
+            }else {
+                PaymentWithCash()
+            }
+        }
     }
 }
 
 #Preview {
-    PaymentView()
+    PaymentView(selectedRadioButton: .constant("apple"))
 }
