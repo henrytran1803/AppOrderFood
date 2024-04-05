@@ -46,6 +46,7 @@
 		D2ADAC472B9A9B94008A1861 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADAC462B9A9B94008A1861 /* CartView.swift */; };
 		D2B442FD2BB2A8330026834B /* bgvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D2B442FC2BB2A8330026834B /* bgvideo.mp4 */; };
 		D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */; };
+		D2BB7ABD2BBF9E2F002C0C56 /* ButtonApplesignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */; };
 		D2C905F82BB66742007F0FE6 /* Product_Cartmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905F72BB66742007F0FE6 /* Product_Cartmodel.swift */; };
 		D2C905FA2BB669CD007F0FE6 /* ListCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905F92BB669CD007F0FE6 /* ListCartView.swift */; };
 		D2C905FC2BB6709B007F0FE6 /* BottomCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905FB2BB6709B007F0FE6 /* BottomCartView.swift */; };
@@ -128,6 +129,8 @@
 		D2ADAC462B9A9B94008A1861 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		D2B442FC2BB2A8330026834B /* bgvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgvideo.mp4; sourceTree = "<group>"; };
 		D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonWelcome.swift; sourceTree = "<group>"; };
+		D2BB7ABB2BBF8AB6002C0C56 /* AppOrderFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppOrderFood.entitlements; sourceTree = "<group>"; };
+		D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplesignin.swift; sourceTree = "<group>"; };
 		D2C905F72BB66742007F0FE6 /* Product_Cartmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product_Cartmodel.swift; sourceTree = "<group>"; };
 		D2C905F92BB669CD007F0FE6 /* ListCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCartView.swift; sourceTree = "<group>"; };
 		D2C905FB2BB6709B007F0FE6 /* BottomCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCartView.swift; sourceTree = "<group>"; };
@@ -326,6 +329,7 @@
 		D2A818B02B974F770049C0E5 /* AppOrderFood */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB7ABB2BBF8AB6002C0C56 /* AppOrderFood.entitlements */,
 				D2A7AA682BB50C0B001841A7 /* Model */,
 				D2A818E12B9750880049C0E5 /* Services */,
 				D2A818E02B9750770049C0E5 /* Modules */,
@@ -442,6 +446,7 @@
 				D2EE116B2BB265FC00A9117E /* WelcomeView.swift */,
 				D2339C312BB2AE7E001A1AB3 /* BottomWelcomeView.swift */,
 				D2268B072BB2B2560087E1B6 /* signView.swift */,
+				D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				D2E43E5C2B98AA8000B15946 /* Chat.swift in Sources */,
 				D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */,
 				D2C906002BB6A49F007F0FE6 /* DiscountShape.swift in Sources */,
+				D2BB7ABD2BBF9E2F002C0C56 /* ButtonApplesignin.swift in Sources */,
 				D2EE116E2BB267DE00A9117E /* PlayerView.swift in Sources */,
 				D291102F2BBD8BCF003C6086 /* ProductCheckout.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
@@ -827,7 +833,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -884,7 +890,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -899,6 +905,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppOrderFood/AppOrderFood.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppOrderFood/Preview Content\"";
@@ -915,8 +923,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.AppOrderFood;
+				PRODUCT_BUNDLE_IDENTIFIER = testAppOrderFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -928,6 +937,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AppOrderFood/AppOrderFood.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppOrderFood/Preview Content\"";
@@ -944,8 +955,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = test.AppOrderFood;
+				PRODUCT_BUNDLE_IDENTIFIER = testAppOrderFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1038,7 +1050,7 @@
 				D2A818D32B974F7A0049C0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D2A818D42B974F7A0049C0E5 /* Build configuration list for PBXNativeTarget "AppOrderFood" */ = {
 			isa = XCConfigurationList;
@@ -1047,7 +1059,7 @@
 				D2A818D62B974F7A0049C0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D2A818D72B974F7A0049C0E5 /* Build configuration list for PBXNativeTarget "AppOrderFoodTests" */ = {
 			isa = XCConfigurationList;
@@ -1056,7 +1068,7 @@
 				D2A818D92B974F7A0049C0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D2A818DA2B974F7A0049C0E5 /* Build configuration list for PBXNativeTarget "AppOrderFoodUITests" */ = {
 			isa = XCConfigurationList;
@@ -1065,7 +1077,7 @@
 				D2A818DC2B974F7A0049C0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

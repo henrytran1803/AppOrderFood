@@ -1,15 +1,13 @@
 //
-//  PaymentWithApplePay.swift
+//  ButtonApplesignin.swift
 //  AppOrderFood
 //
-//  Created by Tran Viet Anh on 04/04/2024.
+//  Created by Tran Viet Anh on 05/04/2024.
 //
 
 import SwiftUI
 import AuthenticationServices
-
-struct PaymentWithApplePay: View {
-    
+struct ButtonApple_ignin: View {
     @AppStorage("email") var email: String = ""
     @AppStorage("fistname") var fistname: String = ""
     @AppStorage("lastname") var lastname: String = ""
@@ -55,9 +53,6 @@ struct PaymentWithApplePay: View {
     }
 }
 
-struct PaymentWithApplePay_Previews: PreviewProvider {
-    static var previews: some View {
-        PaymentWithApplePay()
-    }
+#Preview {
+    ButtonApple_ignin()
 }
-
