@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AuthenticationServices
-struct ButtonApple_ignin: View {
+struct ButtonApplesignin: View {
     @AppStorage("email") var email: String = ""
     @AppStorage("fistname") var fistname: String = ""
     @AppStorage("lastname") var lastname: String = ""
@@ -40,7 +40,7 @@ struct ButtonApple_ignin: View {
                             break
                         }
                         
-                    case .failure(let error):
+                    case .failure(_):
                         print("fail")
                         break
                     }
@@ -53,6 +53,6 @@ struct ButtonApple_ignin: View {
     }
 }
 
-#Preview {
-    ButtonApple_ignin()
-}
+//#Preview {
+//    ButtonApplesignin()
+//}
