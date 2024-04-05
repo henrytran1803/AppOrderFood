@@ -47,6 +47,7 @@
 		D2B442FD2BB2A8330026834B /* bgvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D2B442FC2BB2A8330026834B /* bgvideo.mp4 */; };
 		D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */; };
 		D2BB7ABD2BBF9E2F002C0C56 /* ButtonApplesignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */; };
+		D2BB7AC02BBFEAE7002C0C56 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7ABF2BBFEAE7002C0C56 /* MapView.swift */; };
 		D2C905F82BB66742007F0FE6 /* Product_Cartmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905F72BB66742007F0FE6 /* Product_Cartmodel.swift */; };
 		D2C905FA2BB669CD007F0FE6 /* ListCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905F92BB669CD007F0FE6 /* ListCartView.swift */; };
 		D2C905FC2BB6709B007F0FE6 /* BottomCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C905FB2BB6709B007F0FE6 /* BottomCartView.swift */; };
@@ -131,6 +132,8 @@
 		D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonWelcome.swift; sourceTree = "<group>"; };
 		D2BB7ABB2BBF8AB6002C0C56 /* AppOrderFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppOrderFood.entitlements; sourceTree = "<group>"; };
 		D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplesignin.swift; sourceTree = "<group>"; };
+		D2BB7ABF2BBFEAE7002C0C56 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D2BB7AC12BBFEC7E002C0C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D2C905F72BB66742007F0FE6 /* Product_Cartmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product_Cartmodel.swift; sourceTree = "<group>"; };
 		D2C905F92BB669CD007F0FE6 /* ListCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCartView.swift; sourceTree = "<group>"; };
 		D2C905FB2BB6709B007F0FE6 /* BottomCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCartView.swift; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 		D2A818B02B974F770049C0E5 /* AppOrderFood */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB7AC12BBFEC7E002C0C56 /* Info.plist */,
 				D2BB7ABB2BBF8AB6002C0C56 /* AppOrderFood.entitlements */,
 				D2A7AA682BB50C0B001841A7 /* Model */,
 				D2A818E12B9750880049C0E5 /* Services */,
@@ -401,6 +405,7 @@
 		D2A818E02B9750770049C0E5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB7ABE2BBFEAAB002C0C56 /* Tracking */,
 				D28A45412BB8447C00DEF9DE /* Profile */,
 				D2268B092BB2B2650087E1B6 /* Payment */,
 				D2ADAC3F2B9A985C008A1861 /* ProductCart */,
@@ -512,6 +517,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2BB7ABE2BBFEAAB002C0C56 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				D2BB7ABF2BBFEAE7002C0C56 /* MapView.swift */,
+			);
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		D2E43E522B98A55500B15946 /* TextField */ = {
@@ -738,6 +751,7 @@
 				D291102F2BBD8BCF003C6086 /* ProductCheckout.swift in Sources */,
 				D2A818EC2B975B390049C0E5 /* LoginView.swift in Sources */,
 				D28A454A2BB84A8600DEF9DE /* BottomProfileView.swift in Sources */,
+				D2BB7AC02BBFEAE7002C0C56 /* MapView.swift in Sources */,
 				D2E43E5F2B98AA9900B15946 /* ImageCircle.swift in Sources */,
 				D2E722D82BBE97C2000F2B44 /* RuleView.swift in Sources */,
 				D20D9F092B996E1F00D183BA /* DetailProductModel.swift in Sources */,
@@ -913,6 +927,8 @@
 				DEVELOPMENT_TEAM = YAH93RZF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppOrderFood/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we want to sell your location history and profit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -945,6 +961,8 @@
 				DEVELOPMENT_TEAM = YAH93RZF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AppOrderFood/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "we want to sell your location history and profit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
