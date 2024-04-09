@@ -7,6 +7,9 @@
 
 
 import SwiftUI
+
+
+
 struct TabView: View {
     @State private var tabSelected: Tab = .house
 
@@ -23,7 +26,7 @@ struct TabView: View {
                 case .cart:
                     CartView()
                 case .person:
-                    WelcomeView()
+                    SettingView()
                 }
 
                 Spacer()
