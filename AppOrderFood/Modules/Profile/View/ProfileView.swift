@@ -11,10 +11,22 @@ enum Flavor: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 struct ProfileView: View {
+    @Binding var isShowProfile :Bool
     @State private var selectedFlavor: Flavor = .edit
+    @State var infoU: User = User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: .now)
+
     var body: some View {
-        VStack{
-            RounderProfile(user: MockUser.user)
+        VStack {
+            HStack{
+                Button(action: {isShowProfile = false}, label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(.white)
+                        .font(.title)
+                })
+                Spacer()
+            }.padding(.top, 50)
+                .padding(.leading, 20)
+            RounderProfile(user: infoU)
                 .padding(.top, 60)
                 .padding()
             List {
@@ -25,14 +37,21 @@ struct ProfileView: View {
             }.pickerStyle(.segmented)
 
             BottomInfoView()
-            
-        } .background(Color(.bgproduct))
+        }
+        .background(Color(.bgproduct))
         .ignoresSafeArea()
-           
+        .onAppear {
+            Task {
+                let infoUser: User = await InfoUser().fetchUserFromFirestore()
+                self.infoU = infoUser
+            }
+        }
+
     }
 }
 
-#Preview {
-    ProfileView()
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView(isShowProfile: .constant(true))
+    }
 }
-

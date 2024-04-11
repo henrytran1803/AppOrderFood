@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:277284918238:ios:fc242e923db362570b434f</string>
+	<key>DATABASE_URL</key>
+	<string>https://beorderfood-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>

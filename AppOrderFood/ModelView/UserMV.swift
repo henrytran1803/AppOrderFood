@@ -9,11 +9,10 @@ import Foundation
 
 import FirebaseCore
 import FirebaseAuth
+import FirebaseFirestore
 
 class AuthManager {
-    
     static let shared = AuthManager()
-    
     func createUser(email: String , password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -39,3 +38,36 @@ class AuthManager {
     }
 
 }
+
+class InfoUser {
+    func fetchUserFromFirestore() async -> User {
+        if let currentUser = Auth.auth().currentUser {
+            guard let email = currentUser.email else {
+                print("Không thể lấy địa chỉ email của người dùng.")
+                return User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: Date())
+            }
+
+            let db = Firestore.firestore()
+            let userRef = db.collection("users").document(email)
+
+            do {
+                let document = try await userRef.getDocument()
+                if document.exists {
+                    if let userData = document.data() {
+                        return User(from: userData, email: email) ?? User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: Date())
+                    } else {
+                        print("Dữ liệu không hợp lệ.")
+                    }
+                } else {
+                    print("Tài liệu không tồn tại")
+                }
+            } catch {
+                print("Lỗi khi lấy tài liệu: \(error)")
+            }
+        } else {
+            print("Không có người dùng hiện tại.")
+        }
+        return User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: Date())
+    }
+}
+
