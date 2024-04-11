@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     @Binding var show : Bool
     @Binding var isSignup : Bool
     @State var userName = ""
     @State var passWord = ""
+    @EnvironmentObject var userSettings: UserSettings
     var body: some View {
         VStack{
             HStack{
@@ -46,7 +48,7 @@ struct LoginView: View {
                         .stroke(lineWidth: 0.1)
                         .foregroundStyle(.black)
                 }
-            TextField("Password", text:$passWord)
+            SecureField("Password", text:$passWord)
                 .padding()
                 .background(Color(.white))
                 .cornerRadius(8)
@@ -59,7 +61,28 @@ struct LoginView: View {
                 }
         Spacer()
             ButtonStyleWelcome(icon: "", title: "Đăng nhập"){
-                
+                AuthManager.shared.signIn(email: userName, password: passWord) { success, error in
+                    if success {
+                        if let user = Auth.auth().currentUser {
+                            let uid = user.uid
+                            let email = user.email
+                            let photoURL = user.photoURL
+                            
+                            let userData: [String: Any] = [
+                                "uid": uid,
+                                "email": email ?? "",
+                                "photoURL": photoURL?.absoluteString ?? ""
+    
+                            ]
+                            print(user)
+                            userSettings.isLoggedIn = true
+                            UserDefaults.standard.set(userData, forKey: "currentUser")
+                        }
+                        
+                    } else {
+                        print("thành cái quần")
+                    }
+                }
             }.padding()
         }.padding()
             .opacity(show ? 1 :0)

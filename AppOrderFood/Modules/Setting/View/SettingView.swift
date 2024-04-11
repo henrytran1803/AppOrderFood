@@ -7,6 +7,7 @@
 
 import SwiftUI
 import TipKit
+import FirebaseAuth
 
 struct StatusTip: Tip {
     var title: Text {
@@ -24,6 +25,7 @@ struct StatusTip: Tip {
     }
 }
 struct SettingView: View {
+    @EnvironmentObject var userSettings: UserSettings
     var statusTip = StatusTip()
     @Environment(\.openURL) var openURL
     private var deepLinkService = DeepLinkService()
@@ -116,7 +118,12 @@ struct SettingView: View {
                 
                 Section(header: Text("Ứng dụng")){
                     Button {
-                        deepLinkService.openURL(type: .email("tranvietanh1803@gmail.com"), openURLAction: openURL)
+                        do {
+                            try Auth.auth().signOut()
+                            userSettings.isLoggedIn = false
+                        } catch let signOutError as NSError {
+                            print("Error signing out: \(signOutError.localizedDescription)")
+                        }
                     } label: {
                         Text("Đăng xuất")
                             .foregroundStyle(.red)
