@@ -13,7 +13,8 @@ enum Flavor: String, CaseIterable, Identifiable {
 struct ProfileView: View {
     @Binding var isShowProfile :Bool
     @State private var selectedFlavor: Flavor = .edit
-    @State var infoU: User = User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: .now)
+    @ObservedObject var infoU  = InfoUser()
+    @State private var isLoading = false
 
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct ProfileView: View {
                 Spacer()
             }.padding(.top, 50)
                 .padding(.leading, 20)
-            RounderProfile(user: infoU)
+            RounderProfile(user: infoU.user)
                 .padding(.top, 60)
                 .padding()
             List {
@@ -41,12 +42,16 @@ struct ProfileView: View {
         .background(Color(.bgproduct))
         .ignoresSafeArea()
         .onAppear {
-            Task {
-                let infoUser: User = await InfoUser().fetchUserFromFirestore()
-                self.infoU = infoUser
-            }
+            isLoading = true
+            infoU.fetchUser()
+            isLoading = false
         }
-
+        .disabled(isLoading)
+        .overlay(Group {
+            if isLoading {
+                ProgressView()
+            }
+        })
     }
 }
 
