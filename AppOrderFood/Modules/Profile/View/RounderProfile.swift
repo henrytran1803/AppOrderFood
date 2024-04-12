@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RounderProfile: View {
-    @State var user: User
+     @ObservedObject var infoU  = InfoUser()
     var body: some View {
         RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
             .frame(width: 370, height: 300)
@@ -22,23 +22,27 @@ struct RounderProfile: View {
                             .padding()
                     Spacer()
                     VStack(alignment: .leading){
-                        Text(user.lastName)
+                        Text("\(infoU.user.lastName)")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .bold()
-                        Text(user.fistName)
+                        Text("\(infoU.user.firstName)")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             .bold()
                         Text("Email")
                             .font(.system(size: 13))
-                        Text(user.email)
+                        Text("\(infoU.user.email)")
                         Text("Date of birth")
                             .font(.system(size: 13))
-                        Text("\(user.dateOfBirth.formatted(.dateTime.day().month().year()))")
+                       // Text("\(infoU.user.dateOfBirth)")
                         Text("Address")
                             .font(.system(size: 13))
-                        Text(user.address)
+                        Text("\(infoU.user.address)")
                     }.foregroundColor(.secondary)
                 }
+            }
+            .onAppear {
+                // Load user data when the view appears
+                infoU.fetchUser()
             }
     }
 }

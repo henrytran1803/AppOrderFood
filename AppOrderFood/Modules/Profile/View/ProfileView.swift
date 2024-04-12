@@ -13,7 +13,7 @@ enum Flavor: String, CaseIterable, Identifiable {
 struct ProfileView: View {
     @Binding var isShowProfile :Bool
     @State private var selectedFlavor: Flavor = .edit
-    @ObservedObject var infoU  = InfoUser()
+    
     @State private var isLoading = false
 
     var body: some View {
@@ -27,7 +27,7 @@ struct ProfileView: View {
                 Spacer()
             }.padding(.top, 50)
                 .padding(.leading, 20)
-            RounderProfile(user: infoU.user)
+            RounderProfile()
                 .padding(.top, 60)
                 .padding()
             List {
@@ -41,17 +41,7 @@ struct ProfileView: View {
         }
         .background(Color(.bgproduct))
         .ignoresSafeArea()
-        .onAppear {
-            isLoading = true
-            infoU.fetchUser()
-            isLoading = false
-        }
-        .disabled(isLoading)
-        .overlay(Group {
-            if isLoading {
-                ProgressView()
-            }
-        })
+        
     }
 }
 

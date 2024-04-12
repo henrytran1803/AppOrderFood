@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        if userSettings.isLoggedIn {
+        
+        let isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+        if isLogin {
             TabView() // or any other authenticated view
         } else {
             WelcomeView()

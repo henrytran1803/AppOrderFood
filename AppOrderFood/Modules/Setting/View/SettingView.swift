@@ -26,30 +26,36 @@ struct StatusTip: Tip {
 }
 struct SettingView: View {
     @State var isShowProfile = false
-    @EnvironmentObject var userSettings: UserSettings
+    @State var isLogout = false
     var statusTip = StatusTip()
+    @ObservedObject var infoU  = InfoUser()
     @Environment(\.openURL) var openURL
     private var deepLinkService = DeepLinkService()
     var body: some View {
         NavigationStack{
             VStack{
-                
                 Image("bgimgprofile")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(height: 250)
                     .overlay{
-                        HStack{
+                        HStack {
                             Circle()
                                 .frame(height: 100)
-                            VStack{
-                                Text("Name")
-                                Text("Name")
-                                Text("Name")
-                            }.font(.title)
-                                .bold()
+                                .background(
+                                    AsyncImage(url: Auth.auth().currentUser?.photoURL)
+                                )
+                            VStack(alignment: .leading) {
+                                Text("tên: \(infoU.user.firstName)")
+                                    Text("Họ: \(infoU.user.lastName)")
+                                    Text("Email: \(infoU.user.email)")
+                                
+                            }
+                            .padding()
+                            .font(.body)
                             Spacer()
-                        }.padding()
+                        }
+                        .padding()
                     }
                 List {
                     
@@ -123,7 +129,8 @@ struct SettingView: View {
                         Button {
                             do {
                                 try Auth.auth().signOut()
-                                userSettings.isLoggedIn = false
+                                UserDefaults.standard.set(false, forKey: "isLogin")
+                                isLogout = true
                             } catch let signOutError as NSError {
                                 print("Error signing out: \(signOutError.localizedDescription)")
                             }
@@ -148,7 +155,15 @@ struct SettingView: View {
         
             .fullScreenCover(isPresented: $isShowProfile, content: {
                 ProfileView(isShowProfile: $isShowProfile)
+                //updateProfile()
             })
+            .fullScreenCover(isPresented: $isLogout, content: {
+                WelcomeView()
+            })
+            .onAppear {
+                // Load user data when the view appears
+                infoU.fetchUser()
+            }
     }
 }
 

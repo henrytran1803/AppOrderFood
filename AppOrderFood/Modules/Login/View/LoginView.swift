@@ -13,7 +13,7 @@ struct LoginView: View {
     @Binding var isSignup : Bool
     @State var userName = ""
     @State var passWord = ""
-    @EnvironmentObject var userSettings: UserSettings
+    @State var isLoginSuccess = false
     var body: some View {
         VStack{
             HStack{
@@ -75,8 +75,8 @@ struct LoginView: View {
     
                             ]
                             print(user)
-                            userSettings.isLoggedIn = true
-                            UserDefaults.standard.set(userData, forKey: "currentUser")
+                            UserDefaults.standard.set(true, forKey: "isLogin")
+                            isLoginSuccess = true
                         }
                         
                     } else {
@@ -87,6 +87,9 @@ struct LoginView: View {
         }.padding()
             .opacity(show ? 1 :0)
             .scaleEffect(show ? 1 : 0.8)
+            .fullScreenCover(isPresented: $isLoginSuccess, content: {
+                TabView()
+            })
     }
 }
 

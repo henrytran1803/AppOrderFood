@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct HomeView: View {
     @State var search = ""
     @State var selectedCategory: CategoryModel?
+    @ObservedObject var infoU  = InfoUser()
+    @State var isLoading = false
     var body: some View {
         
         VStack{
             HStack{
-                VStack(alignment: .leading){
-                    Text("Xin chào, Việt anh")
+                VStack(alignment: .leading) {
+                    Text("Xin chào, \(infoU.user.firstName)")
                     Text("Chào mừng trở lại!")
-                        .font(.title)
                 }
                 Spacer()
             }.padding(.horizontal)
@@ -49,6 +51,17 @@ struct HomeView: View {
             
             
         }.padding(.top, 60)
+            .onAppear {
+                isLoading = true
+                infoU.fetchUser()
+                isLoading = false
+            }
+            .disabled(isLoading)
+            .overlay(Group {
+                if isLoading {
+                    ProgressView()
+                }
+            })
     }
 //    var selectedProducts: [DetailProductModel] {
 //        if let selectedCategory = selectedCategory {

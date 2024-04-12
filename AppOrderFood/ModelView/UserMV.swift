@@ -46,64 +46,38 @@ enum UserError: Error {
     case noCurrentUser
 }
 
-class InfoUser : ObservableObject {
-    @Published var user: User = User(fistName: "", lastName: "", email: "", address: "", dateOfBirth: .now)
-        
+class InfoUser: ObservableObject {
+    @Published var user: User = User(firstName: "", lastName: "", email: "", address: "", dateOfBirth: Timestamp(date: Date()))
+    @Published var errorMessage: String?
     
-    func fetchUserFromFirestore(completion: @escaping (Result<User, Error>) -> Void) {
-        if let currentUser = Auth.auth().currentUser {
-            guard let email = currentUser.email else {
-                print("Không thể lấy địa chỉ email của người dùng.")
-                completion(.failure(UserError.invalidEmail))
-                return
+    func fetchUser() {
+        guard let currentUser = Auth.auth().currentUser else {
+            print("No current user")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let userId = currentUser.uid
+        print(userId)
+        let docRef = db.collection("users").document(userId)
+        
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                do {
+                    self.user = try document.data(as: User.self)
+                    print(self.user)
+                    self.errorMessage = nil
+                } catch let error {
+                    print("Error decoding document: \(error)")
+                    self.errorMessage = "Error decoding document: \(error.localizedDescription)"
+                }
+            } else {
+                print("Document does not exist")
+                self.errorMessage = "Document does not exist"
             }
-            print(email)
-            let db = Firestore.firestore()
-            let userRef = db.collection("users").document(email)
-
-            userRef.getDocument { document, error in
-                if let error = error {
-                    print("Lỗi khi lấy tài liệu: \(error)")
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let document = document, document.exists else {
-                    print("Tài liệu không tồn tại")
-                    completion(.failure(UserError.documentNotFound))
-                    return
-                }
-
-                guard let userData = document.data() else {
-                    print("Dữ liệu không hợp lệ.")
-                    completion(.failure(UserError.invalidData))
-                    return
-                }
-
-                if let user = User(from: userData, email: email) {
-                    completion(.success(user))
-                } else {
-                    completion(.failure(UserError.invalidUser))
-                }
-            }
-        } else {
-            print("Không có người dùng hiện tại.")
-            completion(.failure(UserError.noCurrentUser))
         }
     }
-    func fetchUser() {
-            InfoUser().fetchUserFromFirestore { result in
-                switch result {
-                case .success(let infoUser):
-                    DispatchQueue.main.async {
-                        self.user = infoUser
-                        print(infoUser)
-                    }
-                case .failure(let error):
-                    print("Error fetching user info: \(error)")
-                }
-            }
-        }
-
+    func reloadUser() {
+        fetchUser()
+    }
 }
-
