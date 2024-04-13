@@ -10,7 +10,7 @@ import FirebaseAuth
 
 struct HomeView: View {
     @State var search = ""
-    @State var selectedCategory: CategoryModel?
+    @State var selectedCategory: CategoriesDetail?
     @ObservedObject var infoU  = InfoUser()
     @State var isLoading = false
     var body: some View {
@@ -55,6 +55,8 @@ struct HomeView: View {
                 isLoading = true
                 infoU.fetchUser()
                 isLoading = false
+                
+                
             }
             .disabled(isLoading)
             .overlay(Group {
@@ -62,6 +64,7 @@ struct HomeView: View {
                     ProgressView()
                 }
             })
+        
     }
 //    var selectedProducts: [DetailProductModel] {
 //        if let selectedCategory = selectedCategory {

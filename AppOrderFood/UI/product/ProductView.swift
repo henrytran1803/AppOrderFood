@@ -1,5 +1,5 @@
 //
-//  Product.swift
+//  ProductView.swift
 //  AppOrderFood
 //
 //  Created by Tran Viet Anh on 06/03/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Product: View {
+struct ProductView: View {
     @State var product  = MockDetailProduct.products[1]
     @State var isClick = false
     var body: some View {
@@ -45,5 +45,5 @@ struct Product: View {
 
 
 #Preview {
-    Product()
+    ProductView()
 }

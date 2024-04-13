@@ -8,28 +8,35 @@
 import SwiftUI
 
 struct Category: View {
-    @State var category : CategoryModel
-    @State var isclick = false
+    var category : CategoriesDetail
+    @State var isClick = false
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
-            .frame(width: 150,height: 45)
-            .foregroundColor(isclick ? Color("bgcategoryclick") : Color("bgcategory"))
-            .overlay{
-                HStack{
-                    Image("\(category.image)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 40)
+            .frame(width: 150, height: 45)
+            .foregroundColor(isClick ? Color("bgcategoryclick") : Color("bgcategory"))
+            .overlay {
+                HStack {
+                    // Sử dụng AsyncImage để tải và hiển thị ảnh từ URL
+                    AsyncImage(url: URL(string: category.category.image)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView() // Placeholder trong lúc tải ảnh
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40)
+                    
                     Text(category.name)
-                        .foregroundColor(isclick ? .white : .secondary)
+                        .foregroundColor(isClick ? .white : .secondary)
                 }
             }
             .onTapGesture {
-                isclick.toggle()
+                isClick.toggle()
             }
     }
 }
 
 #Preview {
-    Category(category: MockCategoryModel.categorys[1])
+    Category(category: CategoriesDetail(name: "Test", category: Categories(detail: "", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4xE7L7-lw86vVUN3eLdg-QNy58KPHocRO6GBUPBRtDg&s")))
 }
+ 

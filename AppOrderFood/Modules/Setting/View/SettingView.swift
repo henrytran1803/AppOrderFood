@@ -26,6 +26,9 @@ struct StatusTip: Tip {
 }
 struct SettingView: View {
     @State var isShowProfile = false
+    
+    @State var isOpenAddCate = false
+    
     @State var isLogout = false
     var statusTip = StatusTip()
     @ObservedObject var infoU  = InfoUser()
@@ -127,6 +130,14 @@ struct SettingView: View {
                     
                     Section(header: Text("Ứng dụng")){
                         Button {
+                            isOpenAddCate = true
+                        } label: {
+                            Text("categories")
+                                .foregroundStyle(.red)
+                        }
+                        
+                        
+                        Button {
                             do {
                                 try Auth.auth().signOut()
                                 UserDefaults.standard.set(false, forKey: "isLogin")
@@ -159,6 +170,9 @@ struct SettingView: View {
             })
             .fullScreenCover(isPresented: $isLogout, content: {
                 WelcomeView()
+            })
+            .fullScreenCover(isPresented: $isOpenAddCate, content: {
+                CategoryView()
             })
             .onAppear {
                 // Load user data when the view appears

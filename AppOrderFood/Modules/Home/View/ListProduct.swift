@@ -21,7 +21,7 @@ struct ListProduct: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(products, id: \.self) { product in
-                        Product(product: product)
+                        ProductView(product: product)
                             .frame(width: geometry.size.width / 0)
                             .onTapGesture {
                                 // Lưu sản phẩm được chọn vào biến selectedProduct
