@@ -1,11 +1,14 @@
 //
-//  ListProduct.swift
+//  ListProductCategory.swift
 //  AppOrderFood
 //
-//  Created by Tran Viet Anh on 28/03/2024.
+//  Created by Tran Viet Anh on 13/04/2024.
 //
+
 import SwiftUI
-struct ListProduct: View {
+
+struct ListProductCategory: View {
+    @State var name : String
     @State var products: [Product] = []
     @State private var selectedProduct: Product?
     @State private var isPresentingDetail = false
@@ -39,15 +42,13 @@ struct ListProduct: View {
         })
 
         .onAppear {
-            ProductMV().fetchProductsFromAllCategories { products in
+            ProductMV().fetchProductByCategory(category: name) { products in
                 self.products = products
             }
         }
     }
 }
 
-struct ListProduct_Previews: PreviewProvider {
-    static var previews: some View {
-        ListProduct()
-    }
+#Preview {
+    ListProductCategory(name : "")
 }

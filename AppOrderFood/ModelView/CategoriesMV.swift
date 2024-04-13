@@ -57,37 +57,16 @@ class CategoriesMV : ObservableObject {
                 for document in querySnapshot!.documents {
                     do {
                         let jsonData = try JSONSerialization.data(withJSONObject: document.data(), options: [])
-//                        if let jsonString = String(data: jsonData, encoding: .utf8) {
-//                                print(jsonString)
-//                            }
                         let categoryDetail = try JSONDecoder().decode(Categories.self, from: jsonData)
                         categoriesDetails.append(CategoriesDetail(name: document.documentID, category: categoryDetail))
                     } catch let error {
                         print("Error decoding document: (error)")
                     }
                 }
+                
                 completion(categoriesDetails)
             }
         }
     }
 }
 
-class ProductMV : ObservableObject {
-    
-    func addProduct(value: Product, name: String, category: String) {
-        
-        let db = Firestore.firestore()
-        
-        let collectionRef = db.collection("categories").document(category)
-        let productCollectionRef = collectionRef.collection("product").document(name)
-        do {
-            let newDocReference = try productCollectionRef.setData(from: value)
-            print("Book stored with new document reference: \(newDocReference)")
-          }
-          catch {
-            print(error)
-          }
-      
-    }
-    
-}

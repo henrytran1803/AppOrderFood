@@ -9,7 +9,7 @@ import SwiftUI
 struct ProductAdd: View {
     @State var category: [String] = []
     @State var selectedCategoryIndex = 0
-    @State var product: Product = Product(detail: "", price: 0, quality: 0, star: 0, image: "")
+    @State var product: Product = Product(name: "", detail: "", price: 0, quality: 0, star: 0, image: "")
     @State var name  = ""
     @State private var priceText = ""
     @State private var qualityText = ""
@@ -24,7 +24,7 @@ struct ProductAdd: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            TextField("name", text: $name)
+            TextField("name", text: $product.name)
             TextField("detail", text: $product.detail)
             TextField("price", text: $priceText)
                 .onChange(of: priceText) { newValue in
@@ -47,7 +47,7 @@ struct ProductAdd: View {
                 }
             Button(action: {
                 if !category.isEmpty {
-                    ProductMV().addProduct(value: product, name: name, category: category[selectedCategoryIndex])
+                    ProductMV().addProduct(value: product, category: category[selectedCategoryIndex])
                 } else {
                     print("No category loaded yet.")
                 }

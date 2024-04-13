@@ -25,6 +25,7 @@ struct Categories: Codable {
 }
 
 struct Product: Codable {
+    var name: String
     var detail: String
     var price: Double
     var quality: Int
@@ -33,7 +34,6 @@ struct Product: Codable {
 }
 
 struct CategoriesDetail: Codable {
-    
     var name : String
     var category: Categories
 }

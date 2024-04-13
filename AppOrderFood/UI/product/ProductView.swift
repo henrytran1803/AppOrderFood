@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductView: View {
-    @State var product  = MockDetailProduct.products[1]
+    @State var product: Product
     @State var isClick = false
     var body: some View {
         ZStack{
@@ -17,16 +17,18 @@ struct ProductView: View {
                 .frame(width:  170, height: 250)
                 .overlay{
                     VStack{
-                        Image(product.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width:  170)
+                        AsyncImage(url: URL(string: product.image)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 170)
+                        Spacer()
                         VStack(alignment: .leading){
                             Text(product.name)
                             .foregroundColor(.white)
-                            Text(product.category)
-                                .foregroundColor(.white)
-                                .padding(.leading)
+                            .bold()
                         }
                         HStack{
                             Image(systemName: "star.fill")
@@ -45,5 +47,5 @@ struct ProductView: View {
 
 
 #Preview {
-    ProductView()
+    ProductView(product: Product(name: "", detail: "", price: 100, quality: 10, star: 10, image: ""))
 }

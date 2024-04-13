@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BottomProduct: View {
-    @State var product : DetailProductModel
+    @State var product : Product
     @State var isClick = true
     @State private var count = 1
     @State private var totalPrice: Double = 0
@@ -117,5 +117,5 @@ struct BottomProduct: View {
 }
 
 #Preview {
-    BottomProduct(product: MockDetailProduct.products[1])
+    BottomProduct(product: Product(name: "", detail: "", price: 10, quality: 10, star: 10, image: ""))
 }

@@ -47,7 +47,7 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-                ListProduct(products: MockDetailProduct.products)
+                ListProduct()
             
             
         }.padding(.top, 60)
