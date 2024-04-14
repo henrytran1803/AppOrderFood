@@ -82,7 +82,9 @@ struct BottomProduct: View {
                                     }
                             Spacer()
                                 
-                                Button(action: {isAdd = true}, label: {
+                                Button(action: {isAdd = true
+                                    add()
+                                }, label: {
                                     RoundedRectangle(cornerRadius: 20)
                                         .foregroundColor(isAdd ? .green : Color("bgproduct") )
                                         .frame(width: isAdd ? .infinity : 148 , height:76)
@@ -114,6 +116,14 @@ struct BottomProduct: View {
                 count -= 1
             }
         }
+    
+    private func add(){
+        var newProduct = product
+        newProduct.quality = count
+        CartMV().addToCart(value: product) {
+                
+        }
+    }
 }
 
 #Preview {

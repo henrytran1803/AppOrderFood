@@ -8,18 +8,41 @@
 import SwiftUI
 
 struct ListCartView: View {
-    @State var products : [ProductCartModel]
+    @ObservedObject var cart = CartMV()
+    @State var products: [Product] = []
+    @Binding var total: Double
     var body: some View {
-        ScrollView{
-            ForEach(products){ product in
-                ItemCartView(product: product)
+        List {
+            ForEach($products, id: \.name) { product in
+                ItemCartView(cart: cart, product: product, total: $total)
                     .padding(.bottom)
-                
             }
-        }.background(Color("bgcart"))
+            .onDelete(perform: removeRows)
+        }
+        
+        .background(Color("bgcart"))
+        .onAppear {
+            cart.fetchProductCart { products in
+                self.products = products
+                total = cart.total
+            }
+        }
+    }
+    
+    func removeRows(at offsets: IndexSet) {
+        var total2: Double = 0
+        offsets.forEach { index in
+            let productToDelete = products[index]
+            cart.deleteProductCart(value: productToDelete) 
+            total2 += Double(products[index].quality) * products[index].price
+        }
+        
+        products.remove(atOffsets: offsets)
+        total = cart.totalProduct() - total2
     }
 }
 
+
 #Preview {
-    ListCartView(products: MockProductCartModel.products)
+    ListCartView(products: [], total: .constant(10))
 }

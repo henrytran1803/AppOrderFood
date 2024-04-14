@@ -7,8 +7,10 @@
 import SwiftUI
 
 struct ItemCartView: View {
-    @State var product : ProductCartModel
+    @ObservedObject var cart: CartMV
+    @Binding var product : Product
     @State private var totalPrice: Double = 0
+    @Binding var total: Double
   @State var count = 1
     var body: some View {
         ZStack{
@@ -21,12 +23,16 @@ struct ItemCartView: View {
                             .foregroundColor(Color("bgproduct"))
                             .frame(width: 80, height: 80)
                             .overlay{
-                                Image("\(product.image)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width:  80)
                                 
+                                AsyncImage(url: URL(string: product.image)) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80)
                             }
+                        Spacer()
                         VStack(alignment: .leading){
                             Text("\(product.name)")
                                 .font(.system(size: 23))
@@ -41,14 +47,15 @@ struct ItemCartView: View {
                                     Image(systemName: "minus.square.fill")
                                         .font(.system(size: 30))
                                         .foregroundColor(Color("bgbutton"))
-
                                 })
-                                Text("\(product.quality)")
-                                Button(action: {product.quality += 1}, label: {
+                                .buttonStyle(PlainButtonStyle())
+                                Text("\(count)")
+                                Button(action: {increaseCount()}, label: {
                                     Image(systemName: "plus.square.fill")
                                         .font(.system(size: 30))
                                         .foregroundColor(Color("bgbutton"))
                                 })
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                     }
@@ -58,16 +65,38 @@ struct ItemCartView: View {
         }
     }
     private func decreaseCount() {
-            if product.quality > 1 {
-                product.quality -= 1
+        if count > 1 {
+            count -= 1
+            let oldTotal = self.total
+            updateCart {
+                // Giảm total bằng cách trừ đi giá của một sản phẩm.
+                self.total = oldTotal - self.product.price
+                print("update: \(self.total)")
             }
         }
-
-
-}
-
-struct ItemCartView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemCartView(product: MockProductCartModel.products[1])
     }
+
+    private func increaseCount() {
+        count += 1
+        let oldTotal = self.total
+        updateCart {
+            self.total = oldTotal + self.product.price
+            print("update: \(self.total)")
+        }
+    }
+
+    private func updateCart(completion: @escaping () -> Void) {
+        var productnew = product
+        productnew.quality = count
+        cart.addToCart(value: product) {
+            completion()
+        }
+    }
+
 }
+
+//struct ItemCartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemCartView(product: Product(name: "", detail: "", price: 10, quality: 10, star: 10, image: ""))
+//    }
+//}

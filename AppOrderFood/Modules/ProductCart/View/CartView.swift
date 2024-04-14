@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct CartView: View {
-    @State var products  = MockProductCartModel.products
     @State var discounts = MockDiscount.discounts
     @State var isDisscount = false
     @State var isDiscountShown = false
     @State var disount = ""
-    @State var isCheckout = true
+    @State var isCheckout = false
+    @State var percent : Double = 0
+    @State var total: Double = 0
     var body: some View {
         NavigationView{
             VStack{
@@ -26,9 +27,7 @@ struct CartView: View {
                     }.bold()
                     Spacer()
                 }.padding([.top, .leading], 50)
-                ListCartView(products : products)
-                    .padding(.horizontal)
-                //.frame(width: .infinity, height: 400)
+                ListCartView(total: $total)
                 Button(action: {isDiscountShown = true}, label: {
                     RoundedRectangle(cornerRadius: 25)
                         .foregroundColor(.white)
@@ -46,12 +45,12 @@ struct CartView: View {
                             }
                         }
                 }).padding(.horizontal)
-                BottomCartView(isCheckout: $isCheckout)
+                BottomCartView(total: $total, discount: $percent, isCheckout: $isCheckout)
                 NavigationLink(
-                    destination: ListDiscount(discounts: discounts ), // Điều hướng đến ListDiscountView
-                    isActive: $isDiscountShown, // Kiểm tra trạng thái hiển thị của ListDiscountView
+                    destination: ListDiscount(discounts: discounts ),
+                    isActive: $isDiscountShown,
                     label: {
-                        EmptyView() // Đây là một NavigationLink rỗng, nó sẽ không hiển thị gì trên giao diện
+                        EmptyView()
                     })
                     .hidden()
                 
@@ -63,6 +62,7 @@ struct CartView: View {
                 .presentationDetents([.height(550), .large])
                 .presentationDragIndicator(.automatic)
         })
+        
     }
 }
 

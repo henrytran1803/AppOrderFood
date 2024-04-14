@@ -12,17 +12,24 @@ struct ProductCategory: View {
     @Binding var isShow: Bool
     var body: some View {
         VStack{
-            HStack{
-                Button(action: {isShow = false}, label: {
+            HStack {
+                Button(action: { isShow = false }) {
                     Image(systemName: "arrow.left")
                         .bold()
                         .font(.system(size: 30))
-                })
-               Spacer()
+                }
+
+                Spacer()
                 Text(name)
                     .bold()
                     .font(.system(size: 30))
+                    .foregroundStyle(.secondary)
+
                 Spacer()
+                Button(action: {}) {
+                    
+                }
+                .disabled(true)
             }
             Divider()
             ListProductCategory(name:name)

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct BottomCartView: View {
-    
+    @Binding var total: Double
+    @Binding var discount: Double
     @Binding var isCheckout:Bool
     var body: some View {
     
@@ -23,7 +24,7 @@ struct BottomCartView: View {
                             Text("Subtotal")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("1000")
+                            Text("\(String(format: "%.2f",total))")
                                 .bold()
                                 .font(.system(size: 20))
                         }.padding([.leading, .bottom, .trailing])
@@ -31,7 +32,8 @@ struct BottomCartView: View {
                             Text("Discount")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("1000")
+                            let dis = total * discount / 100
+                            Text("\(String(format: "%.2f",dis))")
                                 .bold()
                                 .font(.system(size: 20))
                         }.padding([.leading, .bottom, .trailing])
@@ -48,7 +50,8 @@ struct BottomCartView: View {
                             Text("Total")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("1000")
+                            let discountedTotal = total - (total * discount / 100)
+                            Text("\(String(format: "%.2f",discountedTotal))")
                                 .bold()
                                 .font(.system(size: 20))
                         }.padding([.leading, .bottom, .trailing])
@@ -79,5 +82,5 @@ struct BottomCartView: View {
 }
 
 #Preview {
-    BottomCartView(isCheckout: .constant(true))
+    BottomCartView(total: .constant(10), discount: .constant(10),  isCheckout: .constant(true))
 }

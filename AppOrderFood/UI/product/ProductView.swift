@@ -24,6 +24,7 @@ struct ProductView: View {
                         }
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 170)
+                        .cornerRadius(25)
                         Spacer()
                         VStack(alignment: .leading){
                             Text(product.name)

@@ -17,7 +17,6 @@ struct Category: View {
                 .foregroundColor(isClick ? Color("bgcategoryclick") : Color("bgcategory"))
                 .overlay {
                     HStack {
-                        // Sử dụng AsyncImage để tải và hiển thị ảnh từ URL
                         AsyncImage(url: URL(string: category.category.image)) { image in
                             image.resizable()
                         } placeholder: {
