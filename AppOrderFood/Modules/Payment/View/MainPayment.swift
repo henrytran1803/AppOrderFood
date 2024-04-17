@@ -17,8 +17,8 @@ struct MainPayment: View {
             VStack{
                 HStack{
                     Image(systemName: "circle.circle.fill")
-                        .renderingMode(.original) // <1>
-                        .foregroundColor(Color(.yellow)) // <2>
+                        .renderingMode(.original)
+                        .foregroundColor(Color(.yellow))
                         .font(.system(size: 20))
                     Rectangle()
                         .frame(width:isCheckout == .checkout ?0: 50,height: 1)
@@ -27,7 +27,7 @@ struct MainPayment: View {
                         Spacer()
                     }
                     Image(systemName:isCheckout == .checkout ? "circle.fill": "circle.circle.fill")
-                        .renderingMode(.original) // <1>
+                        .renderingMode(.original)
                         .foregroundColor(Color(isCheckout ==  .checkout ? .gray : .yellow)) //
                         .font(.system(size: 20))
                     Rectangle()
@@ -38,7 +38,7 @@ struct MainPayment: View {
                     }
                    
                     Image(systemName: isCheckout ==  .success ? "circle.circle.fill" : "circle.fill"  )
-                        .renderingMode(.original) // <1>
+                        .renderingMode(.original) 
                         .foregroundColor(Color(isCheckout ==  .success ? .yellow : .gray)) // <2>
                         .font(.system(size: 20))
                     

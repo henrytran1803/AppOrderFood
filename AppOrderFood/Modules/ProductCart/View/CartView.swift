@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct CartView: View {
+    @State var codeDiscount = ""
+    @State var percentDiscount : Double = 0
     @State var isDisscount = false
     @State var isDiscountShown = false
     @State var disount = ""
     @State var isCheckout = false
     @State var percent : Double = 0
     @State var total: Double = 0
+   
+
     var body: some View {
         NavigationView{
             VStack{
@@ -37,16 +41,21 @@ struct CartView: View {
                                     .foregroundColor(Color("bgbutton"))
                                     .font(.system(size: 20))
                                     .padding(.horizontal)
-                                Text("Bạn có mã giảm giá ư?")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 20))
-                                
+                                if codeDiscount.isEmpty {
+                                    Text("Bạn có mã giảm giá ư?")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 20))
+                                }else {
+                                    Text("\(codeDiscount), \(percentDiscount)")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 20))
+                                }
                             }
                         }
                 }).padding(.horizontal)
-                BottomCartView(total: $total, discount: $percent, isCheckout: $isCheckout)
+                BottomCartView(total: $total, discount: $percentDiscount, isCheckout: $isCheckout)
                 NavigationLink(
-                    destination: ListDiscount(),
+                    destination: ListDiscount(isDiscountShown: $isDiscountShown, codeDiscount: $codeDiscount, percenDiscount: $percentDiscount),
                     isActive: $isDiscountShown,
                     label: {
                         EmptyView()
@@ -61,7 +70,12 @@ struct CartView: View {
                 .presentationDetents([.height(550), .large])
                 .presentationDragIndicator(.automatic)
         })
+
         
+    }
+    private func updatePercent() {
+        print("\(percentDiscount)    \(total)")
+        percent = (percentDiscount * total) / 100
     }
 }
 

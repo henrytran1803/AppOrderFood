@@ -41,7 +41,7 @@ struct BottomCartView: View {
                             Text("Delivery")
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Text("1000")
+                            Text("NULLLLL")
                                 .bold()
                                 .font(.system(size: 20))
                         }.padding([.leading, .bottom, .trailing])

@@ -9,11 +9,18 @@ import SwiftUI
 
 struct ListDiscount: View {
     @ObservedObject var viewModel = DiscountMV()
-    
+    @Binding var isDiscountShown: Bool
+    @Binding var codeDiscount: String
+    @Binding var percenDiscount: Double
     var body: some View {
         ScrollView {
             ForEach(viewModel.discounts, id: \.name) { discount in
                 DiscountView(discount: discount)
+                    .onTapGesture {
+                        codeDiscount = discount.code
+                        percenDiscount = discount.percent
+                        isDiscountShown = false
+                    }
             }
         }
         .background(Color("bgproduct"))
@@ -25,6 +32,6 @@ struct ListDiscount: View {
     }
 }
 
-#Preview {
-    ListDiscount()
-}
+//#Preview {
+//    ListDiscount()
+//}
