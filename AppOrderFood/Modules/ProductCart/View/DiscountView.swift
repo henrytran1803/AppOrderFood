@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct DiscountView: View {
-    @State var discount : DiscountModel
+    @State var discount : Discount
     var body: some View {
         DiscountShape()
             .overlay{
                 HStack{
-                    Image("\(discount.image)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width:  70)
-                        .padding(.leading, 30)
+                    AsyncImage(url: URL(string: discount.image)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:  70)
+                    .padding(.leading, 25)
                     Rectangle()
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
                         .frame(width: 1, height: 80)
@@ -27,9 +30,14 @@ struct DiscountView: View {
                         Text("\(String(format: "%.1f", discount.percent )) OFF")
                             .bold()
                         Text("\(discount.name)")
-                        Text("Valid untill \(discount.duedate.formatted(.dateTime.day().month().year()))")
-                            .font(.system(size: 10))
-                            .foregroundStyle(.secondary)
+                        Text("Hết hạn vào \(discount.dueday)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+
+
+                        
+
+
                     }
                     Rectangle()
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
@@ -43,12 +51,20 @@ struct DiscountView: View {
                 }
             }
     }
-}
-
-
-struct DiscountView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiscountView(discount: MockDiscount.discounts[1])
+    func formatTimestamp(timestamp: TimeInterval) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        let date = Date(timeIntervalSince1970: timestamp)
+        return dateFormatter.string(from: date)
     }
 }
+
+
+//struct DiscountView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DiscountView(discount: Discount(code: "", name: "", percent: 0, dueday: Date(), image: ""))
+//    }
+//}
 

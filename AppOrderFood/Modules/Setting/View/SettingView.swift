@@ -28,7 +28,7 @@ struct SettingView: View {
     @State var isShowProfile = false
     
     @State var isOpenAddCate = false
-    
+    @State var isOpenDiscount = false
     @State var isLogout = false
     var statusTip = StatusTip()
     @ObservedObject var infoU  = InfoUser()
@@ -135,7 +135,12 @@ struct SettingView: View {
                             Text("categories")
                                 .foregroundStyle(.red)
                         }
-                        
+                        Button {
+                            isOpenDiscount = true
+                        } label: {
+                            Text("discount")
+                                .foregroundStyle(.red)
+                        }
                         
                         Button {
                             do {
@@ -170,6 +175,9 @@ struct SettingView: View {
             })
             .fullScreenCover(isPresented: $isLogout, content: {
                 WelcomeView()
+            })
+            .fullScreenCover(isPresented: $isOpenDiscount, content: {
+                DiscountAddView()
             })
             .fullScreenCover(isPresented: $isOpenAddCate, content: {
                 CategoryView()

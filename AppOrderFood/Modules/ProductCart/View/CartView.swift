@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CartView: View {
-    @State var discounts = MockDiscount.discounts
     @State var isDisscount = false
     @State var isDiscountShown = false
     @State var disount = ""
@@ -47,7 +46,7 @@ struct CartView: View {
                 }).padding(.horizontal)
                 BottomCartView(total: $total, discount: $percent, isCheckout: $isCheckout)
                 NavigationLink(
-                    destination: ListDiscount(discounts: discounts ),
+                    destination: ListDiscount(),
                     isActive: $isDiscountShown,
                     label: {
                         EmptyView()

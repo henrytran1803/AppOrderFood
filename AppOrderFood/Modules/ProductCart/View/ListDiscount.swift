@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct ListDiscount: View {
-    @State var discounts :[DiscountModel]
+    @ObservedObject var viewModel = DiscountMV()
+    
     var body: some View {
-        ScrollView{
-            ForEach(discounts){ discount in
+        ScrollView {
+            ForEach(viewModel.discounts, id: \.name) { discount in
                 DiscountView(discount: discount)
-                
             }
-        }.background(Color("bgproduct"))
+        }
+        .background(Color("bgproduct"))
+        .onAppear {
+            viewModel.fetchDiscount{discount in
+                viewModel.discounts = discount
+            }
+        }
     }
 }
 
 #Preview {
-    ListDiscount(discounts: MockDiscount.discounts)
+    ListDiscount()
 }
