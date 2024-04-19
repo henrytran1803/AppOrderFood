@@ -10,6 +10,7 @@ enum checkout{
     case checkout, payment, success
 }
 struct MainPayment: View {
+    @State var  order :Oder
     @State var isCheckout: checkout = .checkout
     @State var selectedRadioButton = "Cash"
     var body: some View {
@@ -54,7 +55,7 @@ struct MainPayment: View {
                 }
                 Spacer()
                 if (isCheckout == .checkout){
-                    ProductCheckout(isCheckout: $isCheckout , selectedRadioButton: $selectedRadioButton)
+                    ProductCheckout(isCheckout: $isCheckout, order: order , selectedRadioButton: $selectedRadioButton)
                 }else if (isCheckout == .payment){
                     PaymentView(selectedRadioButton: $selectedRadioButton, isCheckout: $isCheckout)
                 } else {
@@ -85,8 +86,4 @@ struct MainPayment: View {
 //        return ApplePayment()
 //    }
     
-}
-
-#Preview {
-    MainPayment()
 }

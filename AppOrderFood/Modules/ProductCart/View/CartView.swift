@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct CartView: View {
     @State var codeDiscount = ""
     @State var percentDiscount : Double = 0
@@ -16,7 +16,7 @@ struct CartView: View {
     @State var isCheckout = false
     @State var percent : Double = 0
     @State var total: Double = 0
-   
+    @ObservedObject var cart = CartMV()
 
     var body: some View {
         NavigationView{
@@ -66,7 +66,8 @@ struct CartView: View {
             .ignoresSafeArea()
             .background(Color("bgcart"))
         }.sheet(isPresented: $isCheckout, content: {
-            MainPayment()
+            let order = payment()
+            MainPayment(order: order)
                 .presentationDetents([.height(550), .large])
                 .presentationDragIndicator(.automatic)
         })
@@ -76,6 +77,18 @@ struct CartView: View {
     private func updatePercent() {
         print("\(percentDiscount)    \(total)")
         percent = (percentDiscount * total) / 100
+    }
+    private func payment() -> Oder{
+        var products :[Product] = []
+        cart.fetchProductCart { product in
+            products = product
+        }
+        
+        let user = InfoUser()
+        user.fetchUser()
+        
+        let order : Oder = Oder(name: "\(user.user.firstName) \(user.user.lastName)", adress: user.user.address, total: total, discount: percentDiscount, date: Timestamp(date: Date()), products: products, status: .no, payment: .cash)
+        return order
     }
 }
 

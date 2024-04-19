@@ -8,8 +8,9 @@ import Foundation
 import FirebaseFirestore
 import Firebase
 enum StatusPayment: Codable {
-    case active
-    case inactive(reason: String)
+    case no
+    case pendding
+    case done
 }
 enum Payment: Codable {
     case cash
@@ -21,7 +22,7 @@ struct Oder: Codable {
     var name: String
     var adress: String
     var total: Double
-    var discount :  String
+    var discount :  Double
     var date: Timestamp
     var products : [Product]
     var status : StatusPayment

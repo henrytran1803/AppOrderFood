@@ -27,13 +27,7 @@ struct DetailProductView: View {
                             })
                             Spacer()
                         }
-                        AsyncImage(url: URL(string: product.image)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 360)
+                        AsyncImageCustom(url: product.image, framew: 360, corner: 20)
                             Spacer()
                             BottomProduct(product: product)
                                 .padding(.bottom,20)

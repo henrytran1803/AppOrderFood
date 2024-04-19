@@ -17,14 +17,7 @@ struct ProductView: View {
                 .frame(width:  170, height: 250)
                 .overlay{
                     VStack{
-                        AsyncImage(url: URL(string: product.image)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 170)
-                        .cornerRadius(25)
+                        AsyncImageCustom(url: product.image, framew: 170, corner: 25)
                         Spacer()
                         VStack(alignment: .leading){
                             Text(product.name)
@@ -49,4 +42,22 @@ struct ProductView: View {
 
 #Preview {
     ProductView(product: Product(name: "", detail: "", price: 100, quality: 10, star: 10, image: ""))
+}
+struct AsyncImageCustom : View {
+    @State var url : String
+    @State var framew : CGFloat
+    @State var corner : CGFloat
+    var body: some View {
+        AsyncImage(url: URL(string: url)) { phase in
+            switch phase {
+            case .empty: ZStack { Color.gray; ProgressView() }
+            case .success(let image): image.resizable()
+            case .failure(let error):
+                Text(error.localizedDescription)
+            }
+        }
+        .aspectRatio(contentMode: .fit)
+        .frame(width: framew)
+        .cornerRadius(corner)
+    }
 }
