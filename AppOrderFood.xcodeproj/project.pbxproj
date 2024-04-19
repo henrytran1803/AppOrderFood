@@ -82,6 +82,7 @@
 		D2B0BFC82BC8371C00A5A1B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B0BFC72BC8371C00A5A1B2 /* GoogleService-Info.plist */; };
 		D2B442FD2BB2A8330026834B /* bgvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D2B442FC2BB2A8330026834B /* bgvideo.mp4 */; };
 		D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */; };
+		D2B73E3B2BD2A3810091CCAE /* OrderMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B73E3A2BD2A3810091CCAE /* OrderMV.swift */; };
 		D2BB7ABD2BBF9E2F002C0C56 /* ButtonApplesignin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */; };
 		D2BB7AC02BBFEAE7002C0C56 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7ABF2BBFEAE7002C0C56 /* MapView.swift */; };
 		D2BB7AC32BC03F95002C0C56 /* TrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB7AC22BC03F95002C0C56 /* TrackingView.swift */; };
@@ -188,6 +189,7 @@
 		D2B0BFC72BC8371C00A5A1B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2B442FC2BB2A8330026834B /* bgvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgvideo.mp4; sourceTree = "<group>"; };
 		D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonWelcome.swift; sourceTree = "<group>"; };
+		D2B73E3A2BD2A3810091CCAE /* OrderMV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMV.swift; sourceTree = "<group>"; };
 		D2BB7ABB2BBF8AB6002C0C56 /* AppOrderFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppOrderFood.entitlements; sourceTree = "<group>"; };
 		D2BB7ABC2BBF9E2F002C0C56 /* ButtonApplesignin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplesignin.swift; sourceTree = "<group>"; };
 		D2BB7ABF2BBFEAE7002C0C56 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				D2F839FD2BCAB6C8008ABB3F /* ProductMV.swift */,
 				D2C2B49D2BCB6839005A0C3C /* CartMV.swift */,
 				D2A85A9D2BCFA95400F11D88 /* DiscountMV.swift */,
+				D2B73E3A2BD2A3810091CCAE /* OrderMV.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				D2A7AA6A2BB50C1E001841A7 /* CategoryModel.swift in Sources */,
 				D2A0F19B2BBCDB48008C534A /* PaymentView.swift in Sources */,
 				D28B5EC92BC96CAD00D1794C /* updateProfile.swift in Sources */,
+				D2B73E3B2BD2A3810091CCAE /* OrderMV.swift in Sources */,
 				D2A818B42B974F770049C0E5 /* ContentView.swift in Sources */,
 				D2E722D62BBE8B9E000F2B44 /* PaymentHandler.swift in Sources */,
 				D2F839FE2BCAB6C8008ABB3F /* ProductMV.swift in Sources */,

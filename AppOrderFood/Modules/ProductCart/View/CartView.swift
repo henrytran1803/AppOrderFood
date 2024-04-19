@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 struct CartView: View {
+    @State var products: [Product] = []
     @State var codeDiscount = ""
     @State var percentDiscount : Double = 0
     @State var isDisscount = false
@@ -30,7 +31,7 @@ struct CartView: View {
                     }.bold()
                     Spacer()
                 }.padding([.top, .leading], 50)
-                ListCartView(total: $total)
+                ListCartView(products: $products, cart: cart,total: $total)
                 Button(action: {isDiscountShown = true}, label: {
                     RoundedRectangle(cornerRadius: 25)
                         .foregroundColor(.white)
@@ -66,11 +67,16 @@ struct CartView: View {
             .ignoresSafeArea()
             .background(Color("bgcart"))
         }.sheet(isPresented: $isCheckout, content: {
-            let order = payment()
+            let order =  payment() // Sử dụng await để đợi cho phương thức payment() hoàn tất
             MainPayment(order: order)
                 .presentationDetents([.height(550), .large])
                 .presentationDragIndicator(.automatic)
-        })
+        }).onAppear {
+            cart.fetchProductCart { products in
+                self.products = products
+                total = cart.total
+            }
+        }
 
         
     }
@@ -79,15 +85,12 @@ struct CartView: View {
         percent = (percentDiscount * total) / 100
     }
     private func payment() -> Oder{
-        var products :[Product] = []
-        cart.fetchProductCart { product in
-            products = product
-        }
-        
+
         let user = InfoUser()
         user.fetchUser()
-        
-        let order : Oder = Oder(name: "\(user.user.firstName) \(user.user.lastName)", adress: user.user.address, total: total, discount: percentDiscount, date: Timestamp(date: Date()), products: products, status: .no, payment: .cash)
+        sleep(2)
+        let order : Oder = Oder(name: "", adress: "", total: total, discount: percentDiscount, date: Timestamp(date: Date()), products: products, status: .no, payment: .cash)
+        print(order)
         return order
     }
 }

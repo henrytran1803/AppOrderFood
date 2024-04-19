@@ -98,7 +98,9 @@ struct ProductCheckout: View {
             },selectedId: selectedRadioButton)
             
             Text("Selected:  \(selectedRadioButton)")
-            Button(action: {isCheckout = .payment}, label: {
+            Button(action: {isCheckout = .payment
+                add()
+            }, label: {
                 RoundedRectangle(cornerRadius: 25.0)
                     .foregroundColor(Color("bgproduct"))
                     .frame(width: .infinity, height: 60)
@@ -116,6 +118,16 @@ struct ProductCheckout: View {
                 .padding(.bottom, 70)
         }
 
+    }
+    func add(){
+        var status : Payment = .cash
+        if selectedRadioButton == "Cash" {
+            status = .cash
+        }else if selectedRadioButton == "Crypto" {
+            status = .crypto
+        }
+        order.payment = status
+        OrderMV().addOrder(value: order)
     }
 
 }

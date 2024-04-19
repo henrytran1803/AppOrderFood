@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ListCartView: View {
-    @ObservedObject var cart = CartMV()
-    @State var products: [Product] = []
+    @Binding var products: [Product]
+    @ObservedObject var cart: CartMV
     @Binding var total: Double
     var body: some View {
         List {
@@ -21,12 +21,7 @@ struct ListCartView: View {
         }
         
         .background(Color("bgcart"))
-        .onAppear {
-            cart.fetchProductCart { products in
-                self.products = products
-                total = cart.total
-            }
-        }
+        
     }
     
     func removeRows(at offsets: IndexSet) {
@@ -42,7 +37,7 @@ struct ListCartView: View {
     }
 }
 
-
-#Preview {
-    ListCartView(products: [], total: .constant(10))
-}
+//
+//#Preview {
+//    ListCartView(products: [], total: .constant(10))
+//}
