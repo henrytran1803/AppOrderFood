@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct Status: View {
+    @Binding var order: Oder
     @Binding var height: CGFloat
-    @State var isGetReady = false
     @State var progress: CGFloat = 0
-    @State var isSuccess = false
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -23,13 +22,13 @@ struct Status: View {
             .overlay{
                 VStack{
                     HStack{
-                        Image(systemName: isGetReady ? "shippingbox.fill" : "shippingbox")
-                            .foregroundColor(isSuccess ? .green : .white)
+                        Image(systemName: order.status == .pendding ? "shippingbox.fill" : "shippingbox")
+                            .foregroundColor(order.status == .done ? .green : .white)
                         Rectangle()
-                            .frame(width:isGetReady ? progress : 0 , height: 1)
-                            .foregroundColor(isSuccess ? .green : .white)
-                        Image(systemName: isGetReady ?  "truck.box.badge.clock.fill" : "")
-                            .foregroundColor(isSuccess ? .green : .white)
+                            .frame(width:order.status == .pendding ? progress : 0 , height: 1)
+                            .foregroundColor(order.status == .done ? .green : .white)
+                        Image(systemName: order.status == .pendding ?  "truck.box.badge.clock.fill" : "")
+                            .foregroundColor(order.status == .done ? .green : .white)
                     }.frame(width: 200)
                         .border(Color.black)
                         .background(.black)
@@ -38,17 +37,16 @@ struct Status: View {
                         
                         HStack{
                             Text("Trạng thái:")
-                            if isGetReady {
-                                Text("Đang trên đường giao đến bạn")
+                            if order.status == .pendding {
+                                Text("Đang đóng gói")
+                            } else if order.status == .done{
+                                Text("Hoàn thành")
                             } else {
-                                Text("Đăng đóng gói")
+                                Text("Đợi thanh toán")
                             }
                         }
-                        Text("Mã đơn hàng: ")
-                        Text("Thời gian giao dự kiến: ")
-                        Text("Tên tài xế: ")
-                        Text("SDT: ")
-                        Text("Biển số xe: ")
+                        Text("Tên người nhận: \(order.name)")
+                        Text("Địa chỉ: \(order.adress)")
                     }
                     
                     
@@ -65,9 +63,10 @@ struct Status: View {
             }
     
     }
+    
 }
 
 
 #Preview {
-    Status(height: .constant(200))
+    Status(order:.constant( Oder(name: "anh", adress: "blabla", total: 100, discount: 100, date: Timestamp(date: Date()), products: [], status: .no, payment: .applePay)), height: .constant(200))
 }

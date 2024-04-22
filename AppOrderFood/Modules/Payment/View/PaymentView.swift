@@ -6,21 +6,20 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct PaymentView: View {
     @Binding var selectedRadioButton: String
     @Binding var  isCheckout: checkout
     @State var isAccept = false
+    @Binding var order : Oder
+    @ObservedObject var orderMV :OrderMV
     var body: some View {
         VStack{
-            if (selectedRadioButton == "ApplePay"){
-                PaymentWithApplePay()
-            }else if (selectedRadioButton == "Crypto"){
-                PaymentWithCrypto()
-            }else {
-                PaymentWithCash(isAccept : $isAccept)
-            }
-            Button(action: {isCheckout  = .success}, label: {
+            PaymentWithCash(isAccept : $isAccept, order: order)
+            Button(action: {loadOrder()
+                isCheckout  = .success
+            
+            }, label: {
                 RoundedRectangle(cornerRadius: 25.0)
                     .foregroundColor(Color("bgproduct"))
                     .frame(width: .infinity, height: 60)
@@ -38,9 +37,24 @@ struct PaymentView: View {
             .padding([.leading, .trailing])
                 .padding(.bottom, 70)
         }
+        .onAppear{
+            print(order)
+        }
+        
+    }
+    func loadOrder(){
+        let docu : String  = UserDefaults.standard.string(forKey: "order") ?? "none"
+        orderMV.getOrder(document: docu) { order in
+            if let order = order {
+                self.order = order
+                print(order)
+            } else {
+                print("eo co")
+            }
+        }
     }
 }
 
-#Preview {
-    PaymentView(selectedRadioButton: .constant("apple"), isCheckout: .constant(.payment))
-}
+//#Preview {
+//    PaymentView(selectedRadioButton: .constant("apple"), isCheckout: .constant(.payment), order: Oder(name: "", adress: "", total: 100, discount: 10, date: Timestamp(date: Date()) , products: [], status: .done, payment: .applePay) )
+//}

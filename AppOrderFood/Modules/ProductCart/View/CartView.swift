@@ -67,9 +67,9 @@ struct CartView: View {
             .ignoresSafeArea()
             .background(Color("bgcart"))
         }.sheet(isPresented: $isCheckout, content: {
-            let order =  payment() // Sử dụng await để đợi cho phương thức payment() hoàn tất
+            let order =  payment()
             MainPayment(order: order)
-                .presentationDetents([.height(550), .large])
+                .presentationDetents([.height(550)])
                 .presentationDragIndicator(.automatic)
         }).onAppear {
             cart.fetchProductCart { products in

@@ -14,30 +14,39 @@ struct HomeView: View {
     @ObservedObject var infoU  = InfoUser()
     @State var isLoading = false
     var body: some View {
-        
-        VStack{
-            HStack{
-                VStack(alignment: .leading) {
-                    Text("Xin chào, \(infoU.user.firstName)")
-                    Text("Chào mừng trở lại!")
-                }
-                Spacer()
-            }.padding(.horizontal)
-            TextField("", text: $search)
-                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity)
-                .overlay(
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        Text("Tìm kiếm")
-                        Spacer()
-                    }.padding(.leading)
-                        .padding(.horizontal, 16)
-                        .foregroundColor(.gray)
-                )
+        ZStack{
+            let orderur = UserDefaults.standard.string(forKey: "order")
+            if orderur != "" {
+                VStack{
+                    TrackOrderView()
+                        .zIndex(1)
+                    Spacer()
+                }.padding(.top, 100)
+                
+            }
+            VStack{
+                HStack{
+                    VStack(alignment: .leading) {
+                        Text("Xin chào, \(infoU.user.firstName)")
+                        Text("Chào mừng trở lại!")
+                    }
+                    Spacer()
+                }.padding(.horizontal)
+                TextField("", text: $search)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                            Text("Tìm kiếm")
+                            Spacer()
+                        }.padding(.leading)
+                            .padding(.horizontal, 16)
+                            .foregroundColor(.gray)
+                    )
                 ListCategory(selectedCategory: $selectedCategory)
                 HStack{
                     Text("Favorite")
@@ -48,9 +57,10 @@ struct HomeView: View {
                     
                 }
                 ListProduct()
-            
-            
-        }.padding(.top, 60)
+                
+                
+            }.padding(.top, 60)
+        }
             .onAppear {
                 isLoading = true
                 infoU.fetchUser()

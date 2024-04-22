@@ -13,6 +13,8 @@ struct MainPayment: View {
     @State var  order :Oder
     @State var isCheckout: checkout = .checkout
     @State var selectedRadioButton = "Cash"
+    @StateObject var orderMV: OrderMV = OrderMV()
+
     var body: some View {
         Spacer()
             VStack{
@@ -44,22 +46,24 @@ struct MainPayment: View {
                         .font(.system(size: 20))
                     
                 }.frame(width: 200,height: 30)
-                HStack{
-                    Picker(selection: $isCheckout, label: Text("Checkout Status")) {
-                        Text("Checkout").tag(checkout.checkout)
-                        Text("Payment").tag(checkout.payment)
-                        Text("Success").tag(checkout.success)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
-                }
+                    .padding()
+                Divider()
+//                HStack{
+//                    Picker(selection: $isCheckout, label: Text("Checkout Status")) {
+//                        Text("Checkout").tag(checkout.checkout)
+//                        Text("Payment").tag(checkout.payment)
+//                        Text("Success").tag(checkout.success)
+//                    }
+//                    .pickerStyle(SegmentedPickerStyle())
+//                    .frame(width: 200)
+//                }
                 Spacer()
                 if (isCheckout == .checkout){
-                    ProductCheckout(isCheckout: $isCheckout, order: order , selectedRadioButton: $selectedRadioButton)
+                    ProductCheckout(isCheckout: $isCheckout, order: $order , selectedRadioButton: $selectedRadioButton, orderMV: orderMV)
                 }else if (isCheckout == .payment){
-                    PaymentView(selectedRadioButton: $selectedRadioButton, isCheckout: $isCheckout)
+                    PaymentView(selectedRadioButton: $selectedRadioButton, isCheckout: $isCheckout, order: $order,  orderMV: orderMV)
                 } else {
-//                    Checkout()
+                    CheckoutView(orderMV: orderMV, order: $order)
                 }
             }
     }

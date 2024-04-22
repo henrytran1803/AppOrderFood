@@ -7,7 +7,7 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
-enum StatusPayment: Codable {
+enum StatusPayment:String, Codable {
     case no
     case pendding
     case done
@@ -18,7 +18,7 @@ enum Payment: Codable {
     case crypto
 }
 
-struct Oder: Codable {
+struct Oder: Codable, Hashable {
     var name: String
     var adress: String
     var total: Double

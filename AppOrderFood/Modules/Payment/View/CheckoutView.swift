@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct CheckoutView: View {
+    @ObservedObject var orderMV: OrderMV
+    @Binding var order : Oder
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if(order.payment == .cash){
+            SuccessView(order: $order)
+        }else{
+            PaymentWithCrypto(order: $order)
+        }
     }
 }
 
-#Preview {
-    CheckoutView()
-}
+//#Preview {
+//    CheckoutView()
+//}

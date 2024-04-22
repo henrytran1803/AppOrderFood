@@ -7,7 +7,7 @@
 
 import SwiftUI
 import TipKit
-
+import Firebase
 
 struct FavoriteLandmarkTip: Tip {
     var title: Text {
@@ -27,8 +27,7 @@ struct FavoriteLandmarkTip: Tip {
 struct PaymentWithCash: View {
     @Binding var isAccept:Bool
     @State var isRule = false
-    @State var total = 100
-    @State var address = "97 man thien hiep phu quan 8"
+    @State var order: Oder
     var favoriteLandmarkTip = FavoriteLandmarkTip()
     var body: some View {
         NavigationStack{
@@ -41,7 +40,7 @@ struct PaymentWithCash: View {
                     .font(.title)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Text("\(total)")
+                Text("\(String(format: "%.2f", order.total))")
                     .bold()
                     .font(.title)
                     .foregroundStyle(.secondary)
@@ -51,7 +50,16 @@ struct PaymentWithCash: View {
                     .bold()
                     .foregroundStyle(.secondary)
                 Spacer()
-                Text(address)
+                Text(order.adress)
+                    .bold()
+                    .foregroundStyle(.secondary)
+            }.padding()
+            HStack{
+                Text("PAYMENT METHOD")
+                    .bold()
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("\(order.payment)")
                     .bold()
                     .foregroundStyle(.secondary)
             }.padding()
@@ -85,5 +93,5 @@ struct PaymentWithCash: View {
 }
 
 #Preview {
-    PaymentWithCash(isAccept: .constant(false))
+    PaymentWithCash(isAccept: .constant(false), order: Oder(name: "", adress: "", total: 100, discount: 10, date: Timestamp(date: Date()) , products: [], status: .done, payment: .applePay) )
 }

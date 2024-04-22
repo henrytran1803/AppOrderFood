@@ -107,11 +107,12 @@ struct SettingView: View {
                             Text("Tài khoản")
                         }.foregroundColor(.black)
                         
-                        Button {
-                            
-                        } label: {
+                        NavigationLink(destination: OrderView()) {
                             Text("Lịch sử đơn hàng")
                         }.foregroundColor(.black)
+                        
+                                                
+
                         
                     }
                     Section(header: Text("Hỗ trợ")){

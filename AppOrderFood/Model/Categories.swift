@@ -24,7 +24,7 @@ struct Categories: Codable {
   
 }
 
-struct Product: Codable {
+struct Product: Codable, Hashable {
     var name: String
     var detail: String
     var price: Double

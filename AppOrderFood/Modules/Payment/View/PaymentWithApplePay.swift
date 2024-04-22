@@ -9,7 +9,7 @@ import SwiftUI
 import AuthenticationServices
 
 struct PaymentWithApplePay: View {
-
+    @State var order: Oder
     var body: some View {
         VStack{
             
@@ -18,9 +18,9 @@ struct PaymentWithApplePay: View {
     }
 }
 
-struct PaymentWithApplePay_Previews: PreviewProvider {
-    static var previews: some View {
-        PaymentWithApplePay()
-    }
-}
+//struct PaymentWithApplePay_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PaymentWithApplePay()
+//    }
+//}
 

@@ -72,22 +72,27 @@ import SwiftUI
 
 struct ProductCheckout: View {
     @Binding var isCheckout : checkout
-    @State var order : Oder
+    @Binding var order : Oder
     @State var objectsArray = ["ApplePay", "Crypto", "Cash"]
     @Binding var selectedRadioButton : String
+    @ObservedObject var orderMV :OrderMV 
     var body: some View {
         VStack{
             
             HStack{
                 Text("Total:")
+                    .bold()
+                    .font(.system(size: 30))
                 Spacer()
-                Text("\(String(format: "%.2f",order.total))")
-            }
+                Text("\(String(format: "%.2f",order.total)) VND")
+            }.foregroundColor(.secondary)
             HStack{
                 Text("Discount:")
+                    .bold()
+                    .font(.system(size: 30))
                 Spacer()
-                Text("\(String(format: "%.2f",order.discount))")
-            }
+                Text("\(String(format: "%.2f",order.discount)) %")
+            }.foregroundColor(.secondary)
             Text("Select payment method")
                 .foregroundColor(.black)
             
@@ -127,7 +132,8 @@ struct ProductCheckout: View {
             status = .crypto
         }
         order.payment = status
-        OrderMV().addOrder(value: order)
+        orderMV.addOrder(value: order)
+        
     }
 
 }

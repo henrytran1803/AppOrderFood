@@ -25,7 +25,7 @@ class ProductMV : ObservableObject {
           catch {
             print(error)
           }
-      
+    
     }
     func fetchProductByCategory(category: String, completion: @escaping ([Product]) -> Void) {
         let db = Firestore.firestore()
@@ -80,10 +80,8 @@ class ProductMV : ObservableObject {
                             }
                         }
 
-                        // Tăng biến đếm khi vòng lặp này kết thúc
                         completedCount += 1
 
-                        // Kiểm tra xem tất cả các vòng lặp đã kết thúc chưa
                         if completedCount == querySnapshot!.documents.count {
                             // Nếu tất cả các vòng lặp đã kết thúc, gọi completion
                             completion(allProducts)
