@@ -10,7 +10,6 @@ import SwiftUI
 struct ListCategory: View {
     @State private var categories: [CategoriesDetail] = []
     @Binding var selectedCategory: CategoriesDetail?
-    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {

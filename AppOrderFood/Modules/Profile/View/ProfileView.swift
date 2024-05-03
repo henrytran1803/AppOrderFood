@@ -17,27 +17,24 @@ struct ProfileView: View {
     @State private var isLoading = false
 
     var body: some View {
-        VStack {
-            HStack{
-                Button(action: {isShowProfile = false}, label: {
-                    Image(systemName: "arrow.left")
-                        .foregroundColor(.white)
-                        .font(.title)
-                })
-                Spacer()
-            }.padding(.top, 50)
-                .padding(.leading, 20)
-            RounderProfile()
-                .padding(.top, 60)
-                .padding()
-            List {
-                Picker("Flavor", selection: $selectedFlavor) {
-                    Text("Sửa thông tin").tag(Flavor.edit)
-                    Text("Xem tổng quan").tag(Flavor.Info)
-                }.foregroundColor(Color(.bgproduct))
-            }.pickerStyle(.segmented)
-
-            BottomInfoView()
+        ScrollView{
+            VStack {
+                HStack{
+                    Button(action: {isShowProfile = false}, label: {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(.white)
+                            .font(.title)
+                    })
+                    Spacer()
+                }.padding(.top, 50)
+                    .padding(.leading, 20)
+                RounderProfile()
+                    .padding(.top, 60)
+                    .padding()
+                updateProfile()
+                
+                BottomInfoView()
+            }
         }
         .background(Color(.bgproduct))
         .ignoresSafeArea()

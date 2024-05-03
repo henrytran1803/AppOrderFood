@@ -97,7 +97,7 @@ struct BottomProduct: View {
                                                     .bold()
                                                     .font(.system(size: 15))
                                             }
-                                        }/*.animation(isAdd ? .easeIn : .easeOut, value: isAdd)*/
+                                        }
                                 })
                             }
                             
@@ -119,7 +119,8 @@ struct BottomProduct: View {
     
     private func add(){
         var newProduct = product
-        newProduct.quality = count
+        newProduct.quality = self.count
+        print(newProduct.quality)
         CartMV().addToCart(value: product) {
                 
         }

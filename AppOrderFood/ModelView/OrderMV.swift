@@ -8,8 +8,24 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseDatabaseInternal
+import MapKit
 class OrderMV :ObservableObject {
-    
+    func getLocationForOrder(orderId: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        let ref = Database.database().reference().child("orders").child(orderId)
+        ref.observeSingleEvent(of: .value) { snapshot in
+            if let orderData = snapshot.value as? [String: Any],
+               let latitudeString = orderData["lat"] as? String,
+               let longitudeString = orderData["long"] as? String,
+               let latitude = Double(latitudeString),
+               let longitude = Double(longitudeString) {
+                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                completion(location)
+            } else {
+                completion(nil)
+            }
+        }
+    }
     func addOrder(value: Oder) {
         guard let currentUser = Auth.auth().currentUser else {
             print("No current user")
@@ -44,6 +60,17 @@ class OrderMV :ObservableObject {
                     try documentCart.setData(from: updatedOrder)
                     UserDefaults.standard.set(documentCart.documentID, forKey: "order")
                     print("Order stored with new document reference: \(documentCart.documentID)")
+                    let ref = Database.database().reference().child("orders").child(documentCart.documentID)
+                    let orderData: [String: Any] = [
+                        "userId": userId ,
+                        "orderId":documentCart.documentID,
+                        "name": updatedOrder.name,
+                        "diachi": updatedOrder.adress,
+                        "shiper": "none",
+                        "lat": "none",
+                        "long": "none",
+                    ]
+                    ref.setValue(orderData)
                 } catch {
                     print("Error adding order: (error)")
                 }
@@ -174,8 +201,7 @@ class OrderMV :ObservableObject {
         let userDocumentRef = db.collection("users").document(userId)
         let orderDocumentRef = userDocumentRef.collection("orders")
         
-        // Query to get done orders
-        let doneOrdersQuery = orderDocumentRef.whereField("status", isEqualTo: "done")
+        let doneOrdersQuery = orderDocumentRef
         
         doneOrdersQuery.getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -190,7 +216,6 @@ class OrderMV :ObservableObject {
                 return
             }
             
-            // Return the count of done orders
             completion(documents.count)
         }
     }
@@ -205,7 +230,6 @@ class OrderMV :ObservableObject {
         let userDocumentRef = db.collection("users").document(userId)
         let orderDocumentRef = userDocumentRef.collection("orders")
         
-        // Query to get done orders
         let doneOrdersQuery = orderDocumentRef.whereField("status", isEqualTo: "done")
         
         doneOrdersQuery.getDocuments { (querySnapshot, error) in
@@ -221,7 +245,6 @@ class OrderMV :ObservableObject {
                 return
             }
             
-            // Return the count of done orders
             completion(documents.count)
         }
     }
@@ -236,7 +259,6 @@ class OrderMV :ObservableObject {
         let userDocumentRef = db.collection("users").document(userId)
         let orderDocumentRef = userDocumentRef.collection("orders")
         
-        // Query to get done orders
         let doneOrdersQuery = orderDocumentRef.whereField("status", isEqualTo: "no")
         
         doneOrdersQuery.getDocuments { (querySnapshot, error) in
@@ -252,7 +274,6 @@ class OrderMV :ObservableObject {
                 return
             }
             
-            // Return the count of done orders
             completion(documents.count)
         }
     }
@@ -278,6 +299,7 @@ class OrderMV :ObservableObject {
             }
         }
     }
+
 
 
 

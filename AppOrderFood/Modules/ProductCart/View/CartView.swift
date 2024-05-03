@@ -88,7 +88,6 @@ struct CartView: View {
 
         let user = InfoUser()
         user.fetchUser()
-        sleep(2)
         let order : Oder = Oder(name: "", adress: "", total: total, discount: percentDiscount, date: Timestamp(date: Date()), products: products, status: .no, payment: .cash)
         print(order)
         return order

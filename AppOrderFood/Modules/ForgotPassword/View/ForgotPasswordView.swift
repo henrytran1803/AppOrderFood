@@ -13,8 +13,7 @@ struct ForgotPasswordView: View {
     @State var userName = ""
     @State var isCorrectUserName = false
     @State var isShowingOTP = false
-    @State var isBackToSignIn = false
-    @State var isNotCorrectUserName = false
+    @State var ishowAlert = false
     var body: some View {
         VStack{
             HStack{
@@ -50,13 +49,30 @@ struct ForgotPasswordView: View {
                         .foregroundStyle(.black)
                 }
         Spacer()
-            ButtonStyleWelcome(icon: "", title: "Gửi mã xác nhận"){
-                
+            ButtonStyleWelcome(icon: "", title: "Đặt lại mật khẩu"){
+                InfoUser().sendPasswordReset(withEmail: userName) { error in
+                    if let error = error {
+                        print("Lỗi khi gửi yêu cầu đặt lại mật khẩu: \(error.localizedDescription)")
+                    } else {
+                        ishowAlert = true
+                    }
+                }
             }.padding()
         }.padding()
             .opacity(show ? 1 :0)
             .scaleEffect(show ? 1 : 0.8)
-
+            .alert(isPresented: $ishowAlert) {
+                        // Hiển thị cảnh báo
+                        Alert(
+                            title: Text("Reset email"),
+                            message: Text("Đã gửi email về kiểm tra email \(userName)."),
+                            primaryButton: .default(Text("Back home")) {
+         
+                                show = false
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
     }
 }
 

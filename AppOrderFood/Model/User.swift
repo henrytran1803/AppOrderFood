@@ -16,4 +16,5 @@ struct User: Codable {
     var email: String
     var address: String
     var dateOfBirth: Timestamp
+    var role : String
 }

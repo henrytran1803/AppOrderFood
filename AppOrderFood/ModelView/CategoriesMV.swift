@@ -27,19 +27,49 @@ class CategoriesMV : ObservableObject {
           }
       
     }
+    func updateCategoryName(oldName: String, newName: String, value: Categories) {
+        let db = Firestore.firestore()
+        
+        let collectionRef = db.collection("categories")
+        let oldDocRef = collectionRef.document(oldName)
+        let newDocRef = collectionRef.document(newName)
+        
+        oldDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data() ?? [:]
+                newDocRef.setData(data) { error in
+                    if let error = error {
+                        print("Error updating document: \(error)")
+                    } else {
+                        print("Document successfully updated")
+                        oldDocRef.delete { error in
+                            if let error = error {
+                                print("Error removing document: \(error)")
+                            } else {
+                                print("Old document successfully removed")
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+
+
     func fetchDocumentNames(completion: @escaping ([String]) -> Void) {
         let db = Firestore.firestore()
         db.collection("categories").getDocuments { (querySnapshot, err) in
-            var documentNames: [String] = [] // Khởi tạo mảng chứa tên documents ở đây
+            var documentNames: [String] = []
             if let err = err {
                 print("Error getting documents: (err)")
-                completion([]) // Trả về một mảng rỗng nếu có lỗi
+                completion([])
             } else {
                 for document in querySnapshot!.documents {
                     documentNames.append(document.documentID)
                 }
                 
-                // Gọi completion handler với mảng tên documents đã lấy được
                 completion(documentNames)
             }
         }

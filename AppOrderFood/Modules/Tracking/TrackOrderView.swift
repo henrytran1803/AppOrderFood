@@ -10,14 +10,19 @@ import Firebase
 struct TrackOrderView: View {
     @ObservedObject var orderMV:OrderMV = OrderMV()
     @State var isOpen = false
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var progress: CGFloat = 0
     @State var order :Oder = Oder(name: "", adress: "", total: 10, discount: 10, date: Timestamp(date: Date()), products: [], status: .done, payment: .applePay)
     var body: some View {
         RoundedRectangle(cornerRadius: 25)
-            .frame(width: .infinity, height: 80)
+            .frame(width: 380, height: 70)
             .foregroundColor(Color("bgproduct"))
             .overlay{
                 HStack{
-                    Image("Image")
+                    Rectangle()
+                        .frame(width: progress, height: 1)
+                        .foregroundColor(Color("bgproduct"))
+                    Image(Int(progress) % 3 == 0 ? "1" : Int(progress) % 3 == 1 ? "2" : "3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
@@ -36,6 +41,15 @@ struct TrackOrderView: View {
             })
             .onAppear{
                 loadOrder()
+            }
+            .onReceive(timer) { _ in
+                withAnimation {
+                    if self.progress < 50 {
+                        self.progress += 1
+                    } else {
+                        self.progress = 0
+                    }
+                }
             }
     }
     func loadOrder(){

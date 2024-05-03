@@ -27,4 +27,7 @@ struct Oder: Codable, Hashable {
     var products : [Product]
     var status : StatusPayment
     var payment : Payment
+    
+
+    
 }

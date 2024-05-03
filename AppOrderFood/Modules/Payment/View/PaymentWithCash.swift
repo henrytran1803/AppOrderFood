@@ -31,8 +31,7 @@ struct PaymentWithCash: View {
     var favoriteLandmarkTip = FavoriteLandmarkTip()
     var body: some View {
         NavigationStack{
-//            ProgressView()
-//                .progressViewStyle(.automatic)
+
             
             HStack{
                 Text("TOTAL")
@@ -67,7 +66,7 @@ struct PaymentWithCash: View {
             TipView(favoriteLandmarkTip, arrowEdge: .bottom)
             HStack{
                 Button(action: {isAccept.toggle()}, label: {
-                    Image(systemName: isAccept ? "checkmark.square.fill" : "checkmark.square")
+                    Image(systemName: isAccept ? "checkmark.square.fill" : "square")
                         .foregroundColor(.black)
                 })
                 Text("Chấp nhận")
@@ -90,6 +89,7 @@ struct PaymentWithCash: View {
             }
         }
     }
+ 
 }
 
 #Preview {

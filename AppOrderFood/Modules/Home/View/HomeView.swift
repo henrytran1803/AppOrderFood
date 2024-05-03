@@ -9,21 +9,13 @@ import SwiftUI
 import FirebaseAuth
 
 struct HomeView: View {
-    @State var search = ""
+    @State var searchText = ""
     @State var selectedCategory: CategoriesDetail?
     @ObservedObject var infoU  = InfoUser()
     @State var isLoading = false
     var body: some View {
         ZStack{
-            let orderur = UserDefaults.standard.string(forKey: "order")
-            if orderur != "" {
-                VStack{
-                    TrackOrderView()
-                        .zIndex(1)
-                    Spacer()
-                }.padding(.top, 100)
-                
-            }
+            
             VStack{
                 HStack{
                     VStack(alignment: .leading) {
@@ -32,7 +24,7 @@ struct HomeView: View {
                     }
                     Spacer()
                 }.padding(.horizontal)
-                TextField("", text: $search)
+                TextField("", text: $searchText)
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
@@ -56,10 +48,17 @@ struct HomeView: View {
                     Spacer()
                     
                 }
-                ListProduct()
+                ListProduct(searchText: $searchText)
                 
                 
             }.padding(.top, 60)
+            let orderur = UserDefaults.standard.string(forKey: "order")
+            if orderur != "" {
+                VStack{
+                    TrackOrderView()
+                    Spacer()
+                }.padding(.top, 70)
+            }
         }
             .onAppear {
                 isLoading = true
@@ -76,13 +75,7 @@ struct HomeView: View {
             })
         
     }
-//    var selectedProducts: [DetailProductModel] {
-//        if let selectedCategory = selectedCategory {
-//            return MockDetailProduct.products.filter { $0.category == selectedCategory }
-//        } else {
-//            return MockDetailProduct.products
-//        }
-//    }
+
 }
 
 #Preview {

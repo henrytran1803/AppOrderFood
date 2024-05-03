@@ -83,7 +83,6 @@ class ProductMV : ObservableObject {
                         completedCount += 1
 
                         if completedCount == querySnapshot!.documents.count {
-                            // Nếu tất cả các vòng lặp đã kết thúc, gọi completion
                             completion(allProducts)
                         }
                     }

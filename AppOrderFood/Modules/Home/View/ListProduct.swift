@@ -9,7 +9,7 @@ struct ListProduct: View {
     @State var products: [Product] = []
     @State private var selectedProduct: Product?
     @State private var isPresentingDetail = false
-    
+    @Binding var searchText : String
     var columns: [GridItem] = [
         GridItem(.fixed(190)),
         GridItem(.fixed(190))
@@ -19,7 +19,7 @@ struct ListProduct: View {
         GeometryReader { geometry in
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(products, id: \.name) { product in
+                    ForEach(filteredProduct, id: \.name) { product in
                         ProductView(product: product)
                             .frame(width: geometry.size.width / 0)
                             .onTapGesture {
@@ -44,10 +44,17 @@ struct ListProduct: View {
             }
         }
     }
+    var filteredProduct: [Product] {
+        if searchText.isEmpty {
+            return products
+        } else {
+            return products.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
 }
 
 struct ListProduct_Previews: PreviewProvider {
     static var previews: some View {
-        ListProduct()
+        ListProduct(searchText: .constant(""))
     }
 }

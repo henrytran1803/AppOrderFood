@@ -48,15 +48,7 @@ struct MainPayment: View {
                 }.frame(width: 200,height: 30)
                     .padding()
                 Divider()
-//                HStack{
-//                    Picker(selection: $isCheckout, label: Text("Checkout Status")) {
-//                        Text("Checkout").tag(checkout.checkout)
-//                        Text("Payment").tag(checkout.payment)
-//                        Text("Success").tag(checkout.success)
-//                    }
-//                    .pickerStyle(SegmentedPickerStyle())
-//                    .frame(width: 200)
-//                }
+
                 Spacer()
                 if (isCheckout == .checkout){
                     ProductCheckout(isCheckout: $isCheckout, order: $order , selectedRadioButton: $selectedRadioButton, orderMV: orderMV)
@@ -67,27 +59,5 @@ struct MainPayment: View {
                 }
             }
     }
-//    func Checkout() -> some View{
-//        if self.selectedRadioButton == "Cash" {
-//            Cashpayment()
-//        }else if self.selectedRadioButton == "Crypto" {
-//            Cryptopayment()
-//        } else{
-//            ApplePayment()
-//        }
-//    }
-//    
-//    
-//    func Cashpayment() -> some View{
-//        return ApplePayment()
-//    }
-//    
-//    func Cryptopayment() -> any View{
-//        return ApplePayment()
-//    }
-//    
-//    func ApplePayment() -> any View {
-//        return ApplePayment()
-//    }
     
 }

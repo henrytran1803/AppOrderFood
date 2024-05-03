@@ -73,6 +73,8 @@ struct BottomCartView: View {
                                 }
                         }).padding([.leading, .trailing])
                             .padding(.bottom, 70)
+                            .disabled(total == 0 ? true : false)
+                            
                     }
                     
                     

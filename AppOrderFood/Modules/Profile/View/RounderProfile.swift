@@ -41,7 +41,6 @@ struct RounderProfile: View {
                 }
             }
             .onAppear {
-                // Load user data when the view appears
                 infoU.fetchUser()
             }
     }

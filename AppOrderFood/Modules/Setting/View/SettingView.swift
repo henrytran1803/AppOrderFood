@@ -40,7 +40,7 @@ struct SettingView: View {
                 Image("bgimgprofile")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: 250)
+                    .frame(height: 170)
                     .overlay{
                         HStack {
                             Circle()
@@ -131,31 +131,29 @@ struct SettingView: View {
                     
                     Section(header: Text("Ứng dụng")){
                         Button {
-                            isOpenAddCate = true
-                        } label: {
-                            Text("categories")
-                                .foregroundStyle(.red)
-                        }
-                        Button {
-                            isOpenDiscount = true
-                        } label: {
-                            Text("discount")
-                                .foregroundStyle(.red)
-                        }
-                        
-                        Button {
                             do {
                                 try Auth.auth().signOut()
                                 UserDefaults.standard.set(false, forKey: "isLogin")
+                                let content = UNMutableNotificationContent()
+                                content.title = "Tạm biệt."
+                                content.subtitle = "Sớm gặp lại nhé."
+                                content.sound = UNNotificationSound.default
+
+                                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+
+                                let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+                                UNUserNotificationCenter.current().add(request)
                                 isLogout = true
                             } catch let signOutError as NSError {
                                 print("Error signing out: \(signOutError.localizedDescription)")
                             }
+                            
                         } label: {
                             Text("Đăng xuất")
                                 .foregroundStyle(.red)
                         }
-                        
+
                     }
                 }
             }
@@ -168,11 +166,9 @@ struct SettingView: View {
                 ])
   
             }
-        //NavigationLink("Hello", destination: ProfileView(), isActive: $isShowProfile)
         
             .fullScreenCover(isPresented: $isShowProfile, content: {
                 ProfileView(isShowProfile: $isShowProfile)
-                //updateProfile()
             })
             .fullScreenCover(isPresented: $isLogout, content: {
                 WelcomeView()
@@ -184,7 +180,6 @@ struct SettingView: View {
                 CategoryView()
             })
             .onAppear {
-                // Load user data when the view appears
                 infoU.fetchUser()
             }
     }

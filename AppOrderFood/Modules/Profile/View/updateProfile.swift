@@ -9,33 +9,70 @@ import SwiftUI
 import Firebase
 
 struct updateProfile: View {
-    @State private var user = User(firstName: "", lastName: "", email: "", address: "", dateOfBirth: Timestamp(date: Date()))
      @State private var isSubmit = false
-
+    @ObservedObject var infoU  = InfoUser()
      var body: some View {
          VStack {
-             TextField("First Name", text: $user.firstName)
-             TextField("Last Name", text: $user.lastName)
-             TextField("Address", text: $user.address)
+             TextField("First Name", text: $infoU.user.firstName)
+                 .padding()
+                 .background(Color(.white))
+                 .cornerRadius(8)
+                 .font(.system(size: 14))
+                 .multilineTextAlignment(.leading)
+                 .overlay{
+                     RoundedRectangle(cornerRadius: 10)
+                         .stroke(lineWidth: 0.1)
+                         .foregroundStyle(.black)
+                 }
+             TextField("Last Name", text:$infoU.user.lastName)
+                 .padding()
+                 .background(Color(.white))
+                 .cornerRadius(8)
+                 .font(.system(size: 14))
+                 .multilineTextAlignment(.leading)
+                 .overlay{
+                     RoundedRectangle(cornerRadius: 10)
+                         .stroke(lineWidth: 0.1)
+                         .foregroundStyle(.black)
+                 }
+             TextField("Address", text: $infoU.user.address)
+                 .padding()
+                 .background(Color(.white))
+                 .cornerRadius(8)
+                 .font(.system(size: 14))
+                 .multilineTextAlignment(.leading)
+                 .overlay{
+                     RoundedRectangle(cornerRadius: 10)
+                         .stroke(lineWidth: 0.1)
+                         .foregroundStyle(.black)
+                 }
              DatePicker(selection: Binding<Date>(
-                 get: { self.user.dateOfBirth.dateValue() },
-                 set: { self.user.dateOfBirth = Timestamp(date: $0) }
+                get: { self.infoU.user.dateOfBirth.dateValue() },
+                set: { self.infoU.user.dateOfBirth = Timestamp(date: $0) }
              ), in: ...Date(), displayedComponents: .date) {
                  Text("Select a date")
              }
-           
-             Button(action: {
-                 addUser()
-     
-                 
-             }) {
-                 Text("Submit")
+             .padding()
+             .background(Color(.white))
+             .cornerRadius(8)
+             .font(.system(size: 14))
+             .multilineTextAlignment(.leading)
+             .overlay{
+                 RoundedRectangle(cornerRadius: 10)
+                     .stroke(lineWidth: 0.1)
+                     .foregroundStyle(.black)
              }
+             ButtonStyleWelcome(icon: "", title: "Cập nhật"){
+                 updateUser()
+             }.padding()
+             
          }
          .padding()
+         .onAppear {
+             infoU.fetchUser()
+         }
      }
-    func addUser() {
-        
+    func updateUser() {
         guard let currentUser = Auth.auth().currentUser else {
             print("No current user")
             return
@@ -44,17 +81,18 @@ struct updateProfile: View {
         let db = Firestore.firestore()
         let userId = currentUser.uid
         let email = currentUser.email
-        self.user.email = email ?? ""
-      let collectionRef = db.collection("users").document(userId)
+        self.infoU.user.email = email ?? ""
+        
+        let collectionRef = db.collection("users").document(userId)
+        
         do {
-            let newDocReference = try collectionRef.setData(from: self.user)
-            print("Book stored with new document reference: \(newDocReference)")
-          }
-          catch {
-            print(error)
-          }
-      
+            try collectionRef.setData(from: self.infoU.user, merge: true)
+            print("User information updated successfully")
+        } catch {
+            print("Error updating user information: \(error)")
+        }
     }
+
 }
 
 #Preview {

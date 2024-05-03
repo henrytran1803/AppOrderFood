@@ -47,7 +47,7 @@ enum UserError: Error {
 }
 
 class InfoUser: ObservableObject {
-    @Published var user: User = User(firstName: "", lastName: "", email: "", address: "", dateOfBirth: Timestamp(date: Date()))
+    @Published var user: User = User(firstName: "", lastName: "", email: "", address: "", dateOfBirth: Timestamp(date: Date()),role: "")
     @Published var errorMessage: String?
     
     func fetchUser() {
@@ -58,9 +58,7 @@ class InfoUser: ObservableObject {
         
         let db = Firestore.firestore()
         let userId = currentUser.uid
-        print(userId)
         let docRef = db.collection("users").document(userId)
-        
         docRef.getDocument { document, error in
             if let document = document, document.exists {
                 do {
@@ -79,5 +77,32 @@ class InfoUser: ObservableObject {
     }
     func reloadUser() {
         fetchUser()
+        
+    }
+
+    func checkRoleUser(uid: String, completion: @escaping (String?) -> Void) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(uid)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let role = document.data()?["role"] as? String {
+                    print("Role của người dùng có UID \(uid) là: \(role)")
+                    completion(role)
+                } else {
+                    print("Không tìm thấy trường 'role' hoặc kiểu dữ liệu không phù hợp")
+                    completion(nil)
+                }
+            } else {
+                print("Tài liệu không tồn tại hoặc có lỗi xảy ra: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+            }
+        }
+    }
+
+    func sendPasswordReset(withEmail email: String, _ callback: ((Error?) -> ())? = nil){
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            callback?(error)
+        }
     }
 }

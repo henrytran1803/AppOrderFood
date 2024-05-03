@@ -14,6 +14,7 @@ struct LoginView: View {
     @State var userName = ""
     @State var passWord = ""
     @State var isLoginSuccess = false
+    @State var alert = false
     var body: some View {
         VStack{
             HStack{
@@ -74,13 +75,22 @@ struct LoginView: View {
                                 "photoURL": photoURL?.absoluteString ?? ""
     
                             ]
-                            print(user)
-                            UserDefaults.standard.set(true, forKey: "isLogin")
-                            isLoginSuccess = true
+                            InfoUser().checkRoleUser(uid: uid) { role in
+                                if let role = role {
+                                    print("Role của người dùng là: \(role)")
+                                    UserDefaults.standard.set(role, forKey: "role")
+                                } else {
+                                    print("Không thể lấy được role của người dùng")
+                                }
+                                UserDefaults.standard.set(true, forKey: "isLogin")
+                                isLoginSuccess = true
+                            }
+                            
+                            
                         }
                         
                     } else {
-                        print("thành cái quần")
+                        alert = true
                     }
                 }
             }.padding()
@@ -88,8 +98,19 @@ struct LoginView: View {
             .opacity(show ? 1 :0)
             .scaleEffect(show ? 1 : 0.8)
             .fullScreenCover(isPresented: $isLoginSuccess, content: {
-                TabView()
+                
+                var role = UserDefaults.standard.string(forKey: "role")
+                
+                if role == "admin" {
+                   AdminView()
+                }else {
+                    TabView()
+                }
+                
             })
+            .alert("Sai tên đăng nhập hoặc mật khẩu", isPresented: $alert) {
+                        Button("OK", role: .cancel) { }
+                    }
     }
 }
 

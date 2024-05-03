@@ -42,10 +42,21 @@ struct SuccessView: View {
             })
         }.onAppear{
             OrderMV().deleteDocument()
+            nofication()
         }
         .fullScreenCover(isPresented: $tracking, content: {
             TrackingView(order: order)
         })
+    }
+    func nofication(){
+        let content = UNMutableNotificationContent()
+        content.title = "Đặt hàng thành công"
+        content.subtitle = "Đợi nhé"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        print("run")
     }
 }
 
