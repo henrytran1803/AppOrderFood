@@ -14,6 +14,14 @@
 				<string>orderapp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-277284918238-ios-fc242e923db362570b434f</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

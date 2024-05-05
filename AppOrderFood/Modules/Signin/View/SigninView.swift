@@ -13,11 +13,15 @@ struct SigninView: View {
     @Binding var show : Bool
     @Binding var isSignin : Bool
     @State var userName = ""
+    @State var phone = ""
     @State var passWord = ""
     @State var repeatPassword = ""
     @State var isShowingSignup = false
     @State var signIn = false
     @State var showNoti = false
+    @State var sentOTP = false
+    @State var otp = ""
+    @State var vercation = ""
     var body: some View {
         VStack{
             HStack{
@@ -42,7 +46,7 @@ struct SigninView: View {
             Text("Đăng ký ngay để được ăn ngon nhé")
                 .foregroundColor(.secondary)
             Spacer()
-            TextField("User name", text:$userName)
+            TextField("Email", text:$userName)
                 .padding()
                 .background(Color(.white))
                 .cornerRadius(8)
@@ -53,6 +57,52 @@ struct SigninView: View {
                         .stroke(lineWidth: 0.1)
                         .foregroundStyle(.black)
                 }
+            HStack{
+                Text("+84")
+                    .padding()
+                    .background(Color(.white))
+                    .cornerRadius(8)
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .foregroundStyle(.black)
+                    }
+                    .frame(width: 60)
+
+                TextField("PhoneNumber", text:$phone)
+                    .padding()
+                    .background(Color(.white))
+                    .cornerRadius(8)
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .foregroundStyle(.black)
+                    }
+                    .frame(width: 250)
+                Button(action: {
+                    sentOTP = true
+                    AuthManager.shared.sendOTP(to: phone){success,verctionID, error in
+                        if success {
+                            vercation = verctionID ?? ""
+                        }
+                    }
+                    
+                }, label: {
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(Color.bgproduct)
+                        .overlay{
+                            Text("Sent OTP")
+                                .foregroundStyle(.white)
+                                .bold()
+                        }
+                    
+                })
+            }
             HStack{
                 let description = strengthDescription()
                 Rectangle()
@@ -87,17 +137,33 @@ struct SigninView: View {
                         .stroke(lineWidth: 0.1)
                         .foregroundStyle(.black)
                 }
-
+            if sentOTP {
+                TextField("OTP", text:$otp)
+                    .padding()
+                    .background(Color(.white))
+                    .cornerRadius(8)
+                    .font(.system(size: 14))
+                    .multilineTextAlignment(.leading)
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .foregroundStyle(.black)
+                    }
+            }
         Spacer()
             ButtonStyleWelcome(icon: "", title: "Đăng ký"){
                 if checkPass() {
-                    AuthManager.shared.createUser(email: userName, password: passWord) { success, error in
-                        if success {
-                            print("User created successfully.")
-                        } else {
-                            print("Failed to create user. Error: \(error?.localizedDescription ?? "Unknown error")")
+                    if sentOTP {
+                        if vercation != ""{
+                            AuthManager.shared.signUp(email: userName, password: passWord, otp: otp, verificationID: vercation){ sucess, errr in
+                                if sucess {
+                                    show.toggle()
+                                    isSignin.toggle()
+                                }
+                            }
                         }
                     }
+                    
                 }else {
                     showNoti = true
                 }

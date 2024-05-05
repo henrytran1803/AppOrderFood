@@ -12,15 +12,16 @@ import FirebaseAuth
 import FirebaseAppCheck
 import UserNotifications
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-      let providerFactory = AppCheckDebugProviderFactory()
-      AppCheck.setAppCheckProviderFactory(providerFactory)
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
 
-    FirebaseApp.configure()
+        FirebaseApp.configure()
 
-    return true
-  }
+        return true
+    }
+
     func applicationDidEnterBackground(_ application: UIApplication) {
         let content = UNMutableNotificationContent()
         content.title = "Order food đợi bạn quay lại."
@@ -32,6 +33,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request)
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // Chuyển tiếp thông báo cho FIRAuth
+        if Auth.auth().canHandleNotification(userInfo) {
+            print("Remote notification forwarded to FIRAuth: \(userInfo)")
+        }
     }
 }
 @main

@@ -13,16 +13,60 @@ import FirebaseFirestore
 
 class AuthManager {
     static let shared = AuthManager()
-    func createUser(email: String , password: String, completion: @escaping (Bool, Error?) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+    func sendOTP(to phoneNumber: String, completion: @escaping (Bool, String?, Error?) -> Void) {
+        var formattedPhoneNumber = phoneNumber
+        formattedPhoneNumber = formattedPhoneNumber.replacingOccurrences(of: " ", with: "")
+        formattedPhoneNumber = formattedPhoneNumber.replacingOccurrences(of: "(", with: "")
+        formattedPhoneNumber = formattedPhoneNumber.replacingOccurrences(of: ")", with: "")
+        if !formattedPhoneNumber.hasPrefix("+") {
+            formattedPhoneNumber = "+84" + formattedPhoneNumber
+        }
+
+        PhoneAuthProvider.provider().verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
-                print("Error creating user: \(error.localizedDescription)")
+                print("Error sending OTP: \(error.localizedDescription)")
+                completion(false, nil, error)
+                return
+            }
+            
+            completion(true, verificationID, nil)
+        }
+    }
+
+
+
+    func signUp(email: String, password: String, otp: String, verificationID: String, completion: @escaping (Bool, Error?) -> Void) {
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: otp)
+        
+        Auth.auth().signIn(with: credential) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                print("Failed to verify OTP: \(error.localizedDescription)")
                 completion(false, error)
-            } else {
-                completion(true, nil)
+                return
+            }
+            
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print("Failed to sign up: \(error.localizedDescription)")
+                    completion(false, error)
+                    return
+                }
+                
+                let currentUser = Auth.auth().currentUser
+                currentUser?.updatePhoneNumber(credential) { error in
+                    if let error = error {
+                        print("Error linking phone number: \(error.localizedDescription)")
+                        completion(false, error)
+                        return
+                    }
+                    
+                    completion(true, nil)
+                }
             }
         }
     }
+
     
     func signIn(email: String , password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
