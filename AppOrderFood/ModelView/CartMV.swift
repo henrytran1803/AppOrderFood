@@ -96,7 +96,6 @@ class CartMV : ObservableObject {
             print("No current user")
             return
         }
-        
         let userId = currentUser.uid
         let db = Firestore.firestore()
         let collectionProduct = db.collection("users").document(userId).collection("cart")
@@ -140,7 +139,6 @@ class CartMV : ObservableObject {
             }
         }
     }
-
     
 }
 extension Product {

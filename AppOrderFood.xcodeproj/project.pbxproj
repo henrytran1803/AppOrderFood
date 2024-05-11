@@ -83,6 +83,7 @@
 		D2A85AA02BD01D6000F11D88 /* Oder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A85A9F2BD01D6000F11D88 /* Oder.swift */; };
 		D2ADAC432B9A9926008A1861 /* ItemCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADAC422B9A9926008A1861 /* ItemCartView.swift */; };
 		D2ADAC472B9A9B94008A1861 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ADAC462B9A9B94008A1861 /* CartView.swift */; };
+		D2B3F93F2BEF1F8D0072E1A5 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D2B3F93E2BEF1F8D0072E1A5 /* LICENSE.txt */; };
 		D2B442FD2BB2A8330026834B /* bgvideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D2B442FC2BB2A8330026834B /* bgvideo.mp4 */; };
 		D2B442FF2BB2AADA0026834B /* buttonWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */; };
 		D2B4A09D2BD5EB12000F8FDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B4A09C2BD5EB12000F8FDD /* GoogleService-Info.plist */; };
@@ -203,6 +204,7 @@
 		D2A85A9F2BD01D6000F11D88 /* Oder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oder.swift; sourceTree = "<group>"; };
 		D2ADAC422B9A9926008A1861 /* ItemCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCartView.swift; sourceTree = "<group>"; };
 		D2ADAC462B9A9B94008A1861 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		D2B3F93E2BEF1F8D0072E1A5 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		D2B442FC2BB2A8330026834B /* bgvideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgvideo.mp4; sourceTree = "<group>"; };
 		D2B442FE2BB2AADA0026834B /* buttonWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonWelcome.swift; sourceTree = "<group>"; };
 		D2B4A09C2BD5EB12000F8FDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 		D2A818A52B974F770049C0E5 = {
 			isa = PBXGroup;
 			children = (
+				D2B3F93E2BEF1F8D0072E1A5 /* LICENSE.txt */,
 				D2BCA48C2BD6C13200B0AF63 /* ReadMe.md */,
 				D2A818B02B974F770049C0E5 /* AppOrderFood */,
 				D2A818C32B974F7A0049C0E5 /* AppOrderFoodTests */,
@@ -911,6 +914,7 @@
 				D2B4A09D2BD5EB12000F8FDD /* GoogleService-Info.plist in Resources */,
 				D29C6AE92BC7D7D3007ECCCA /* Launch Screen.storyboard in Resources */,
 				D2A818B82B974F790049C0E5 /* Assets.xcassets in Resources */,
+				D2B3F93F2BEF1F8D0072E1A5 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
